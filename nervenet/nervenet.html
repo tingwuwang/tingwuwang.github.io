@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+  body {
+    font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight:300;
+    font-size:18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+  }
+
+  h1 {
+    font-weight:300;
+  }
+
+  .disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    padding: 20px;
+  }
+
+  video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.rounded {
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  a:link,a:visited
+  {
+    color: #1367a7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #208799;
+  }
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+
+
+  .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .vert-cent {
+    position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  hr
+  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+</style>
+<!-- Start : Google Analytics Code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-64069893-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+<!-- End : Google Analytics Code -->
+<script type="text/javascript" src="../js/hidebib.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+  <head>
+    <title>NerveNet: Learning Structured Policy with Graph Neural Networks</title>
+    <meta property="og:description" content="NerveNet: Learning Structured Policy with Graph Neural Networks.Tingwu Wang*, Renjie Liao{Two authors contribute equally.}, Jimmy Ba, Sanja Fidler"/>
+  </head>
+
+  <body>
+        <br>
+        <center><span style="font-size:46px;font-weight:bold;">NerveNet: Learning Structured Policy with Graph Neural Networks</span></center>
+        <br>
+
+        <table align=center width=800px>
+          <tr>
+            <td align=center width=100px>
+            <center><span style="font-size:24px"><a href="http://www.cs.toronto.edu/~tingwuwang">Tingwu Wang</a>*</span></center></td>
+            <td align=center width=100px>
+            <center><span style="font-size:24px"><a href="http://www.cs.toronto.edu/~rjliao/">Renjie Liao</a>*</span></center></td>
+            <td align=center width=100px>
+            <center><span style="font-size:24px"><a href="https://jimmylba.github.io/">Jimmy Ba</a></span></center></td>
+            <td align=center width=100px>
+            </center><span style="font-size:24px"><a href="www.cs.toronto.edu/~fidler/">Sanja Fidler</a></span></center></td>
+          <tr/>
+        </table>
+        <table align=center width=500px>
+          <tr>
+            <td align=center width=500px><center><span style="font-size:24px">University of Toronto&nbsp;&nbsp; &amp; &nbsp;&nbsp;Vector Institute</span></center></td>
+          <tr/>
+        </table>
+        </center>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="nervenet_title.png"><img class="rounded" src = "nervenet_title.png" height="320px"></img></a><br></center>
+          </td></tr>
+        </table>
+
+        <br>
+        We address the problem of learning structured policies for continuous control. In traditional reinforcement learning, policies of agents are learned by MLPs which take the concatenation of all observations from the environment as input for predicting actions. 
+        In this work, we propose NerveNet to explicitly model the structure of an agent, which naturally takes the form of a graph.
+        Specifically, serving as the agent's policy network, NerveNet first propagates information over the structure of the agent and then predict actions for different parts of the agent. 
+        In the experiments, we first show that our NerveNet is comparable to state-of-the-art methods on standard MuJoCo environments. 
+        We further propose our customized reinforcement learning environments for benchmarking two types of structure transfer learning tasks, i.e., size and disability transfer. We demonstrate that policies learned by NerveNet are significantly better than policies learned by other models and are able to transfer even in a zero-shot setting.
+      <br>
+      <br>
+      <hr>
+      <center id="sourceCode"><h1><b><a href="https://github.com/WilsonWangTHU/NerveNet">Source Code</a></b> and Demos</h1></center>
+          <table width="600px" align="center">
+          <tbody><tr><td width="600px" align="center">
+                       <iframe width="800" height="450"
+                           src="https://www.youtube.com/embed/ImSlirW1EI8">
+                       </iframe> 
+                  </td></tr>
+          </tbody></table>
+      <br>
+      <hr>
+        <center id="sourceCode"><h1>Performance on MuJoCo Benchmarks</h1></center>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="trad.png"><img class="rounded" src = "trad.png" height="350px"></img></a><br></center>
+          </td></tr>
+        </table>
+        We compare NerveNet with the standard MLP models and TreeNet.
+        From the figures, we can see that NerveNet basically matches the performance of MLP in terms of sample efficiency as well as the performance after it converges.
+        In most cases, the TreeNet is worse than NerveNet which highlights the importance of keeping the physical graph structure.
+      <br>
+      <hr>
+        <center id="sourceCode"><h1>Zero-shot Performance</h1></center>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="zeroshot_s.png"><img class="rounded" src = "zeroshot_s.png" height="250px"></img></a><br></center>
+          </td></tr>
+
+          <tr><td width=1000px>
+            <center><a href="zeroshot_c.png"><img class="rounded" src = "zeroshot_c.png" height="420px"></img></a><br></center>
+          </td></tr>
+        </table>
+        We examine the zero-shot performance without any fine-tuning.
+        As we can see from Figures NerveNet outperforms all competitors on almost all settings.
+        By including the results of running-length, we notice that NerveNet is the only model able to walk in the zero-shot evaluations of centipedes.
+        As a matter of fact, the performance of NerveNet could be orders-of-magnitude better,
+        and most of the time, agents from other methods cannot even move forward.
+        We also notice that if transferred from CentipedeSix, NerveNet is able to provide walkable pretrained models on all new agents.
+      <br>
+      <hr>
+        <center id="sourceCode"><h1>Finetuning RL Agents</h1></center>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="snake_finetue.png"><img class="rounded" src = "snake_finetue.png" height="520px"></img></a><br></center>
+          </td></tr>
+          <tr><td width=1000px>
+            <center><a href="c_finetune.png"><img class="rounded" src = "c_finetune.png" height="535px"></img></a><br></center>
+          </td></tr>
+        </table>
+
+        We fine-tune for both <em>size transfer</em> and <em>disability transfer</em> experiments and show the training curves.
+        From the figure, we can see that by using the pre-trained model, NerveNet significantly decreases the number of episodes required to reach the level of reward which is considered as solved.
+      <br>
+      <hr>
+        <center id="sourceCode"><h1>Intepretable Features</h1></center>
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="walk-cycle.png"><img class="rounded" src = "walk-cycle.png" height="300px"></img></a><br></center>
+          </td></tr>
+
+          <tr><td width=1000px>
+            <center><a href="feature_intrep.png"><img class="rounded" src = "feature_intrep.png" height="535px"></img></a><br></center>
+          </td></tr>
+        </table>
+
+        Moreover, by examining the result videos of centipedes, we noticed that the "walk-cycle" behavior is observed for NerveNet but is not common for others.
+        Walk-cycle are adopted for many insects in the world.
+        For example, six-leg ants uses tripedal gait, where the legs are used in two separate triangles alternatively touching the ground.<br>
+
+        We visualize and interpret the learned representations. We extract the final state vectors of nodes of NerveNet.
+        We then apply 1-D and 2-D PCA on the node representations.
+        We notice that each pair of legs is able to learn invariant representations, despite their different position in the agent.
+        As we can see, there is a clear periodic behavior of our hidden representations learned by our model. Furthermore, the representations of adjacent left legs and the adjacent right legs demonstrate a phase shift, which further proves that our agents are able to learn the walk-cycle without any additional supervision.
+      <br>
+
+      <hr>
+        <center id="sourceCode"><h1>Model Variants</h1></center>
+
+        <table align=center width=1000px>
+          <tr><td width=1000px>
+            <center><a href="variant.png"><img class="rounded" src = "variant.png" height="240px"></img></a><br></center>
+          </td></tr>
+        </table>
+
+        As we can see from figures, the NerveNet-MLP and NerveNet-2 variants perform better than NerveNet-1.
+        One potential reason is that sharing the weights of the value and policy networks
+        makes the trust-region based optimization methods, like PPO, more sensitive to the weights of the value function.
+      <br>
+      <hr>
+
+        <table align=center width=850px>
+          <center><h1>Paper</h1></center>
+          <tr>
+          <td width=400px align=left>
+          <!-- <p style="margin-top:4px;"></p> -->
+          <a><img style="height:400px" src="thumbnails_gnnrl.jpg"/></a>
+          <center>
+          <span style="font-size:20pt"><a href='https://openreview.net/pdf?id=S1sqHMZCb'>[Paper 3.3MB]</a>&nbsp;
+          </center>
+          </td>
+          <td width=50px align=center>
+          </td>
+          <td width=450px align=left>
+          <!-- <p style="margin-top:4px;"></p> -->
+          <p style="text-align:left;"><b><span style="font-size:20pt">Citation</span></b><br/><span style="font-size:6px;">&nbsp;<br/></span> <span style="font-size:15pt">Tingwu Wang, Renjie Liao, Jimmy Ba and Sanja Fidler. <br><br><b>NerveNet: Learning Structured Policy with Graph Neural Networks.</b></span></p>
+          </td>
+          </tr>
+          <tr>
+          <td width=350px align=left>
+          </td>
+          <td width=100px align=center>
+          </td>
+          <td width=450px align=left>
+            </td>
+            </tr>
+        </table>
+      <br>
+      <hr>
+
+      <table width="100%" cellspacing="0" cellpadding="20" border="0" align="center">
+          <tbody><tr><td><br><p align="right"><font size="2">
+                          Last Update: Nov 16th, 2017<br>
+                          Web Page Template: <a href="https://pathak22.github.io/noreward-rl/">this</a>
+                      </font></p></td></tr>
+          </tbody></table>
+
+</body>
+</html>
+
