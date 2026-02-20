@@ -1,52 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-        <style type="text/css">
-        /* Design Credits: Jon Barron and Abhishek Kar and Saurabh Gupta*/
-            a {
-                color: #1772d0;
-                text-decoration:none;
-            }
-            a:focus, a:hover {
-                color: #f09228;
-                text-decoration:none;
-            }
-            body,td,th {
-                font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-                font-size: 16px;
-                font-weight: 400
-            }
-            heading {
-                font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-                font-size: 19px;
-                font-weight: 1000
-            }
-            strong {
-                font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-                font-size: 16px;
-                font-weight: 800
-            }
-            strongred {
-                font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-                color: red;
-                font-size: 16px
-            }
-            sectionheading {
-                font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-                font-size: 22px;
-                font-weight: 600
-            }
-        </style>
-
-        <link rel="icon" type="image/png" href="images/seal_icon.png">
-        <script type="text/javascript" src="js/hidebib.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tingwu Wang</title>
         <meta name="description" content="Homepage of Tingwu Wang, Senior Research Scientist at NVIDIA GEAR">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
-        <!-- Start : Google Analytics 4 Code -->
+
+        <!-- Preconnect for Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Google Analytics (placeholder) -->
+        <!--
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -54,609 +22,632 @@
             gtag('js', new Date());
             gtag('config', 'G-XXXXXXXXXX');
         </script>
-        <!-- End : Google Analytics 4 Code -->
-        <!-- Scramble Script by Jeff Donahue -->
-        <script src="js/scramble.js"></script>
+        -->
     </head>
 
     <body>
-        <table width="980" border="0" align="center" cellspacing="0" cellpadding="20">
-            <tr>
-                <td>
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <p align="center"><font size="7">Tingwu Wang<img style="height:75px;" align="top" src="resources/tingwu.png"> </font><br>
-                        Senior research scientist at Nvidia.  Email = wilsonwanguoft @ <img style="height:14px; position:relative; top:2px;" src="resources/mail-gmail-logo-2020-ogp.png"> .com <br>
+        <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#publications">Publications</a>
+        </nav>
+
+        <main class="site-container">
+
+            <!-- ===== Hero / About ===== -->
+            <section class="hero" id="about">
+                <h1 class="hero-name">Tingwu Wang<img src="resources/tingwu.png" alt="Chinese characters for Tingwu"></h1>
+                <p class="hero-contact">
+                    Senior research scientist at Nvidia. Email = wilsonwanguoft @ <img style="height:14px; position:relative; top:2px;" src="resources/mail-gmail-logo-2020-ogp.png" alt="Gmail"> .com
+                </p>
+                <div class="hero-links">
+                    <img src="resources/cv.jpg" alt="CV icon" style="width:15px; height:18px;">
+                    <a href="resources/cv.pdf">CV</a>
+                    <span class="link-sep">|</span>
+                    <img src="resources/gscholar-button_inactive.svg" alt="Google Scholar icon">
+                    <a href="https://scholar.google.com/citations?user=HvJj-pEAAAAJ&hl=en">Google Scholar</a>
+                    <span class="link-sep">|</span>
+                    <img src="resources/github.png" alt="GitHub icon">
+                    <a href="https://github.com/WilsonWangTHU/">Github</a>
+                    <span class="link-sep">|</span>
+                    <img src="resources/twitter.png" alt="Twitter icon">
+                    <a href="https://twitter.com/TingwuWang">Twitter</a>
+                    <span class="link-sep">|</span>
+                    <img src="resources/linkedin.png" alt="LinkedIn icon">
+                    <a href="https://www.linkedin.com/in/tingwu-wang-3a592baa/">LinkedIn</a>
+                </div>
+
+                <div class="hero-bio">
+                    <div class="hero-bio-text">
+                        <p>
+                            I am a senior research scientist in Nvidia's Generalist Embodied Agent Research (GEAR) team.
+                            Previously I obtained my PhD in University of Toronto, proudly advised by Prof. <a href="http://www.cs.utoronto.ca/%7Efidler/">Sanja Fidler</a>
+                            and Prof. <a href="https://jimmylba.github.io/">Jimmy Ba</a>.
+                            My name is pronounced as <a href="https://translate.google.com/#zh-CN/zh-CN/%E4%BA%AD%E5%8D%88">Ting-Wu</a>, and it means "midday" in Chinese.
                         </p>
-                        <p align=center><font size='5'>
-                            <img style="width: 15px; height:18px;" src="resources/cv.jpg"> <a href="resources/cv.pdf">CV</a> |
-                            <img style="width: 18px; height:18px;" src="resources/gscholar-button_inactive.svg">
-                            <a href="https://scholar.google.com/citations?user=HvJj-pEAAAAJ&hl=en">Google Scholar</a> | 
-                            <img style="width: 18px; height:18px;" src="resources/github.png">
-                            <a href="https://github.com/WilsonWangTHU/">Github</a> |
-                            <img style="width: 18px; height:18px;" src="resources/twitter.png">
-                            <a href="https://twitter.com/TingwuWang">Twitter</a> |
-                            <img style="width: 18px; height:18px;" src="resources/linkedin.png">
-                            <a href="https://www.linkedin.com/in/tingwu-wang-3a592baa/">LinkedIn</a>
-                        </font></p>
+                        <p>
+                            My research experience ranges widely from developing animation motion engines to deploying real robots.
+                            Since my PhD, I have been dedicated to exploring a central theme: creating scalable, robust, and generalist motion skills that seamlessly bridge the virtual and real worlds.
+                        </p>
+                    </div>
+                    <div class="hero-bio-photo">
+                        <img src="resources/tingwu_head.jpg" alt="Photo of Tingwu Wang">
+                    </div>
+                </div>
+            </section>
 
-                        <tr>
-                            <td width="80%" valign="middle" align="justify">
-                                I am a senior research scientist in Nvidia's Generalist Embodied Agent Research (GEAR) team.
-                                Previously I obtained my PhD in University of Toronto, proudly advised by Prof. <a href="http://www.cs.utoronto.ca/%7Efidler/">Sanja Fidler</a>
-                                and Prof. <a href="https://jimmylba.github.io/">Jimmy Ba</a>.
-                                My name is pronounced as <a href='https://translate.google.com/#zh-CN/zh-CN/%E4%BA%AD%E5%8D%88'>Ting-Wu</a>, and it means "midday" in Chinese.<br><br>
+            <!-- ===== Education ===== -->
+            <section id="education">
+                <h2 class="section-heading">Education</h2>
+                <ul class="edu-list">
+                    <li class="edu-item animate-on-scroll">
+                        <img src="resources/ut.png" alt="University of Toronto logo" loading="lazy">
+                        <div class="edu-item-content">
+                            <div class="edu-item-row">
+                                <span>PhD in Computer Science @ <strong>University of Toronto</strong></span>
+                                <span class="date">Jan. 2018 - June. 2022</span>
+                            </div>
+                            <div class="edu-item-row">
+                                <span>Toronto, Ontario, Canada</span>
+                                <span>Advisor: <a href="http://www.cs.utoronto.ca/%7Efidler/">Prof. Sanja Fidler</a> and <a href="https://jimmylba.github.io/">Prof. Jimmy Ba</a></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="edu-item animate-on-scroll">
+                        <img src="resources/ut.png" alt="University of Toronto logo" loading="lazy">
+                        <div class="edu-item-content">
+                            <div class="edu-item-row">
+                                <span>MSc in Computer Science @ <strong>University of Toronto</strong></span>
+                                <span class="date">Aug. 2016 - Jan. 2018</span>
+                            </div>
+                            <div class="edu-item-row">
+                                <span>Toronto, Ontario, Canada, GPA: 4.0/4.0</span>
+                                <span>Advisor: <a href="http://www.cs.utoronto.ca/%7Efidler/">Prof. Sanja Fidler</a></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="edu-item animate-on-scroll">
+                        <img src="resources/thu.png" alt="Tsinghua University logo" loading="lazy">
+                        <div class="edu-item-content">
+                            <div class="edu-item-row">
+                                <span>BSc in Electronic Engineering @ <strong>Tsinghua University</strong></span>
+                                <span class="date">Sep. 2012 - Jun. 2016</span>
+                            </div>
+                            <div class="edu-item-row">
+                                <span>Beijing, P. R. China</span>
+                                <span>Advisor: <a href="https://scholar.google.com/citations?user=YMUXzZMAAAAJ&hl=en">Prof. Xing Li</a></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="edu-item animate-on-scroll">
+                        <img src="resources/tum.png" alt="TU Munich logo" loading="lazy">
+                        <div class="edu-item-content">
+                            <div class="edu-item-row">
+                                <span>Visitor in Electronic Information @ <strong>Technischen Universit&#228;t M&#252;nchen</strong></span>
+                                <span class="date">Sep. 2014 - Feb. 2015</span>
+                            </div>
+                            <div class="edu-item-row">
+                                <span>Munich, Bavaria, Germany</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
 
-                                My research experience ranges widely from developing animation motion engines to deploying real robots.
-                                Since my PhD, I have been dedicated to exploring a central theme: creating scalable, robust, and generalist motion skills that seamlessly bridge the virtual and real worlds.
-                            </td>
+            <!-- ===== Publications and Patents ===== -->
+            <section id="publications">
+                <div class="section-heading-row">
+                    <h2 class="section-heading">Publications and Patents</h2>
+                    <span class="equal-contrib-note"><span style="font-size:1.3em;">*</span> equal contribution.</span>
+                </div>
 
-                            <td width="20%"><img src="resources/tingwu_head.jpg" width="100%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                 <!--I was 82kg at the time. Now (Feb. 27, 2019) I am 82.0 kg</td> -->
-                        </tr>
-                    </table>
+                <!-- CHIP -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/chip_overview.gif" alt="CHIP humanoid control overview" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">CHIP: Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation</h3>
+                        <p class="pub-authors">
+                            <a href="https://ericcsr.github.io/">Sirui Chen</a><strong>*</strong>,
+                            <a href="https://zi-ang-cao.github.io/">Zi-ang Cao</a><strong>*</strong>,
+                            <a href="https://www.zhengyiluo.com/">Zhengyi Luo</a>,
+                            <a href="https://scholar.google.com/citations?user=U9WUBC4AAAAJ">Fernando Casta&#241;eda</a>,
+                            <a href="https://scholar.google.com/citations?user=O_PbKNMAAAAJ">Chenran Li</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://www.ye-yuan.com/">Ye Yuan</a>,
+                            <a href="https://jimfan.me">Linxi "Jim" Fan</a>,
+                            <a href="https://tml.stanford.edu/people/karen-liu">C. Karen Liu</a><sup>&#8225;</sup> &amp;
+                            <a href="https://yukezhu.me">Yuke Zhu</a><sup>&#8225;</sup>
+                        </p>
+                        <p class="pub-venue"><em>arXiv preprint</em>, 2025</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2512.14689">Arxiv</a>
+                            <a href="https://nvlabs.github.io/CHIP/">Project</a>
+                        </div>
+                    </div>
+                </article>
 
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <tr>
-                            <td>
-                                <sectionheading>Education</sectionheading>
-                                <ul>
-                                    <li>
-                                        <img align="center" loading="lazy" src='resources/ut.png' style="width: 40px; height: 40px;">
-                                        PhD in Computer Science @
-                                        <span style="font-weight: bold;">University of Toronto</span>
-                                        <span style="float:right">Jan. 2018 - June. 2022</span> <br>
-                                        Toronto, Ontario, Canada
-                                        <span style="float:right;">Advisor:
-                                            <a href="http://www.cs.utoronto.ca/%7Efidler/">Prof. Sanja Fidler</a> and
-                                            <a href="https://jimmylba.github.io/">Prof. Jimmy Ba</a></span><br>
-                                    </li><br>
+                <!-- SONIC -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/sonic_overview.gif" alt="SONIC humanoid motion tracking overview" loading="lazy">
+                        <img src="resources/sonic_lawnmower.gif" alt="SONIC lawnmower demo" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control</h3>
+                        <p class="pub-authors">
+                            <a href="https://www.zhengyiluo.com/">Zhengyi Luo</a><strong>*</strong>,
+                            <a href="https://www.ye-yuan.com/">Ye Yuan</a><strong>*</strong>,
+                            <strong>Tingwu Wang*</strong>,
+                            <a href="https://scholar.google.com/citations?user=O_PbKNMAAAAJ">Chenran Li</a><strong>*</strong>,
+                            <a href="https://ericcsr.github.io/">Sirui Chen</a>,
+                            <a href="https://scholar.google.com/citations?user=U9WUBC4AAAAJ">Fernando Casta&#241;eda</a>,
+                            <a href="https://zi-ang-cao.github.io/">Zi-Ang Cao</a>,
+                            <a href="https://jeffli.site/">Jiefeng Li</a>,
+                            <a href="https://www.linkedin.com/in/david-minor-992295a8">David Minor</a>,
+                            <a href="https://www.qingweiben.com/">Qingwei Ben</a>,
+                            <a href="https://scholar.google.com/citations?user=5lwj5vIAAAAJ">Xingye Da</a>,
+                            <a href="https://dingry.github.io/">Runyu Ding</a>,
+                            <a href="https://www.linkedin.com/in/cyrushogg">Cyrus Hogg</a>,
+                            <a href="https://www.linkedin.com/in/linasong">Lina Song</a>,
+                            <a href="https://www.linkedin.com/in/edysusantolim">Edy Lim</a>,
+                            <a href="https://www.linkedin.com/in/eugene-ilyoung-jeong-831b074">Eugene Jeong</a>,
+                            <a href="https://tairanhe.com/">Tairan He</a>,
+                            <a href="https://haoruxue.github.io/">Haoru Xue</a>,
+                            <a href="https://wenlixiao-cs.github.io/">Wenli Xiao</a>,
+                            <a href="https://www.linkedin.com/in/zi-wang-b675aa236">Zi Wang</a>,
+                            <a href="https://www.linkedin.com/in/simon-yuen-68ba851">Simon Yuen</a>,
+                            <a href="https://jankautz.com/">Jan Kautz</a>,
+                            <a href="https://www.linkedin.com/in/yanchang1">Yan Chang</a>,
+                            <a href="https://www.umariqbal.info/">Umar Iqbal</a>,
+                            <a href="https://jimfan.me">Linxi "Jim" Fan</a><sup>&#8225;</sup>,
+                            <a href="https://yukezhu.me">Yuke Zhu</a><sup>&#8225;</sup>
+                        </p>
+                        <p class="pub-venue"><em>arXiv preprint</em>, 2025</p>
+                        <div class="pub-links">
+                            <a href="https://nvlabs.github.io/SONIC/static/pdf/sonic_paper.pdf">Paper</a>
+                            <a href="https://nvlabs.github.io/SONIC/">Project</a>
+                            <a href="https://arxiv.org/abs/2511.07820">Arxiv</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <li>
-                                        <img align="center" loading="lazy" src='resources/ut.png' style="width: 40px; height: 40px;">
-                                        MSc in Computer Science @
-                                        <span style="font-weight: bold;">University of Toronto</span>
-                                        <span style="float:right">Aug. 2016 - Jan. 2018</span> <br>
-                                        Toronto, Ontario, Canada, GPA: 4.0/4.0
-                                        <span style="float:right;">Advisor:
-                                            <a href="http://www.cs.utoronto.ca/%7Efidler/">Prof. Sanja Fidler</a></span><br>
-                                    </li><br>
+                <!-- MFM Patent -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/mfm.gif" alt="Generative human motion simulation" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Machine Learning Models for Generative Human Motion Simulation</h3>
+                        <p class="pub-authors">
+                            <a href="https://xbpeng.github.io/">Xue Bin Peng</a>,
+                            <a href="https://ye-yuan.com/">Ye Yuan</a>,
+                            <a href="https://davrempe.github.io/">Davis Rempe</a>,
+                            <a href="https://umariqbal.info/">Umar Iqbal</a>,
+                            <a href="https://orlitany.github.io/">Or Litany</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://tesslerc.github.io/">Chen Tessler</a>,
+                            <a href="https://jankautz.com/">Jan Kautz</a>,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp;
+                            <a href="https://www.linkedin.com/in/michaelbuttner/">Michael Buttner</a>
+                        </p>
+                        <p class="pub-venue"><em>Patent</em>, 2025</p>
+                        <div class="pub-links">
+                            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=HvJj-pEAAAAJ&sortby=pubdate&citation_for_view=HvJj-pEAAAAJ:M3ejUd6NZC8C">Link</a>
+                            <a href="https://youtu.be/c7PArTVAYEA?si=LNtY16d-eEupAVus&t=2620">Talk</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <li>
-                                        <img align="center" loading="lazy" src='resources/thu.png' style="width: 40px; height: 40px;">
-                                        &nbsp;BSc in Electronic Engineering @
-                                        <span style="font-weight: bold;">Tsinghua University</span>
-                                        <span style="float:right">Sep. 2012 - Jun. 2016</span> <br>
-                                        Beijing, P. R. China
-                                        <span style="float:right;">Advisor:
-                                            <a href="https://scholar.google.com/citations?user=YMUXzZMAAAAJ&hl=en">Prof. Xing Li</a></span><br>
-                                    </li> <br>
+                <!-- InterPhys -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/inter_phys_teaser.gif" alt="Physical character-scene interactions" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Synthesizing Physical Character-Scene Interactions</h3>
+                        <p class="pub-authors">
+                            <a href="https://mohamedhassanmus.github.io/">Mohamed Hassan</a>,
+                            <a href="https://www.linkedin.com/in/kelly-guo-18316982/">Yunrong Guo</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://ps.is.mpg.de/person/black">Michael Black</a>,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp;
+                            <a href="https://xbpeng.github.io/">Xue Bin Peng</a>
+                        </p>
+                        <p class="pub-venue"><em>SIGGRAPH</em>, 2023</p>
+                        <div class="pub-links">
+                            <a href="https://www.youtube.com/watch?v=q3hyQdaElQQ">Video</a>
+                            <a href="https://arxiv.org/abs/2302.00883">Arxiv</a>
+                            <a href="https://xbpeng.github.io/projects/InterPhys/index.html">Project Webpage</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <li>
-                                        <img align="center" loading="lazy" src='resources/tum.png' style="width: 40px; height: 40px;">
-                                        &nbsp;Visitor in Electronic Information @
-                                        <span style="font-weight: bold;">Technischen Universit&#228;t M&#252;nchen</span>
-                                        <span style="float:right">Sep. 2014 - Feb. 2015</span> <br>
-                                        Munich, Bavaria, Germany<br>
-                                    </li>
-                                </ul>
-                            </td></tr>
-                    </table>
+                <!-- PhD Thesis -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/graphcon_teaser.png" alt="Physics-based motion skills thesis" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Learning Scalable Physics-based Motion Skills with Reinforcement Learning</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>
+                        </p>
+                        <p class="pub-venue"><em>PhD Thesis</em>, 2022</p>
+                        <div class="pub-links">
+                            <a href="https://tspace.library.utoronto.ca/handle/1807/128326">Project Webpage</a>
+                        </div>
+                    </div>
+                </article>
 
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <tr>
-                            <sectionheading>Publications and Patents</sectionheading> <span style="float:right;"><strong><span style="font-size:1.3em;">*</span></strong> equal contribution.</span>
-                        </tr>
+                <!-- Physics-based Human Motion -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_kinematics.png" alt="Physics-based human motion estimation" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Physics-based Human Motion Estimation and Synthesis from Videos</h3>
+                        <p class="pub-authors">
+                            <a href="https://kevincxie.github.io/">Kevin Xie</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="http://www.umariqbal.info/">Umar Iqbal</a>,
+                            <a href="https://www.linkedin.com/in/kelly-guo-18316982/">Yunrong Guo</a>,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp;
+                            <a href="http://www.cs.toronto.edu/~florian/">Florian Shkurti</a>
+                        </p>
+                        <p class="pub-venue"><em>International Conference on Computer Vision, ICCV</em>, 2021</p>
+                        <div class="pub-links">
+                            <a href="https://www.youtube.com/watch?v=MrKlPvWvQ2Q">Two Minute Papers</a>
+                            <a href="https://arxiv.org/abs/2109.09913">Arxiv</a>
+                            <a href="https://nv-tlabs.github.io/physics-pose-estimation-project-page/">Project Webpage</a>
+                        </div>
+                    </div>
+                </article>
 
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/chip_overview.gif" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>CHIP: Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation</heading><br>
-                                    <a href="https://ericcsr.github.io/">Sirui Chen</a><strong>*</strong>,
-                                    <a href="https://zi-ang-cao.github.io/">Zi-ang Cao</a><strong>*</strong>,
-                                    <a href="https://www.zhengyiluo.com/">Zhengyi Luo</a>,
-                                    <a href="https://scholar.google.com/citations?user=U9WUBC4AAAAJ">Fernando Castañeda</a>,
-                                    <a href="https://scholar.google.com/citations?user=O_PbKNMAAAAJ">Chenran Li</a>,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href="https://www.ye-yuan.com/">Ye Yuan</a>,
-                                    <a href="https://jimfan.me">Linxi "Jim" Fan</a>,
-                                    <a href="https://tml.stanford.edu/people/karen-liu">C. Karen Liu</a><sup>‡</sup> &
-                                    <a href="https://yukezhu.me">Yuke Zhu</a><sup>‡</sup>
-                                    <br>
-                                    <em>arXiv preprint</em>, 2025<br>
+                <!-- UniCon -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_unicon_cover.png" alt="UniCon universal neural controller" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">UniCon: Universal Neural Controller For Physics-based Character Motion</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://github.com/kelBear">Yunrong Guo</a>,
+                            <a href="https://shumash.com/">Maria Shugrina</a> &amp;
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a>
+                        </p>
+                        <p class="pub-venue"><em>Arxiv</em>, 2020</p>
+                        <div class="pub-links">
+                            <a href="https://nv-tlabs.github.io/unicon/">Project Webpage</a>
+                            <a href="https://arxiv.org/abs/2011.15119">Arxiv</a>
+                            <a href="https://nv-tlabs.github.io/unicon/resources/teaser.mp4">Teaser Demo</a>
+                            <a href="https://nv-tlabs.github.io/unicon/resources/main_demo.mp4">Video</a>
+                            <a href="https://nv-tlabs.github.io/unicon/resources/main.pdf">PDF</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://arxiv.org/abs/2512.14689">Arxiv</a> |
-                                        <a href="https://nvlabs.github.io/CHIP/">Project</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <div style="display: flex; flex-direction: column; align-items: center;">
-                                    <img src="resources/sonic_overview.gif" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8)); margin-bottom:20px;">
-                                    <img src="resources/sonic_lawnmower.gif" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                </div>
-                                <td width="67%" valign="top">
-                                    <p>
-                                        <heading>SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control</heading><br>
-                                        <a href="https://www.zhengyiluo.com/">Zhengyi Luo</a><strong>*</strong>,
-                                        <a href="https://www.ye-yuan.com/">Ye Yuan</a><strong>*</strong>, 
-                                        <strong>Tingwu Wang*</strong>, 
-                                        <a href="https://scholar.google.com/citations?user=O_PbKNMAAAAJ">Chenran Li</a><strong>*</strong>, 
-                                        <a href="https://ericcsr.github.io/">Sirui Chen</a>,
-                                        <a href="https://scholar.google.com/citations?user=U9WUBC4AAAAJ">Fernando Castañeda</a>,
-                                        <a href="https://zi-ang-cao.github.io/">Zi-Ang Cao</a>, 
-                                        <a href="https://jeffli.site/">Jiefeng Li</a>, 
-                                        <a href="https://www.linkedin.com/in/david-minor-992295a8">David Minor</a>,
-                                        <a href="https://www.qingweiben.com/">Qingwei Ben</a>,
-                                        <a href="https://scholar.google.com/citations?user=5lwj5vIAAAAJ">Xingye Da</a>,
-                                        <a href="https://dingry.github.io/">Runyu Ding</a>,
-                                        <a href="https://www.linkedin.com/in/cyrushogg">Cyrus Hogg</a>,
-                                        <a href="https://www.linkedin.com/in/linasong">Lina Song</a>,
-                                        <a href="https://www.linkedin.com/in/edysusantolim">Edy Lim</a>,
-                                        <a href="https://www.linkedin.com/in/eugene-ilyoung-jeong-831b074">Eugene Jeong</a>,
-                                        <a href="https://tairanhe.com/">Tairan He</a>,
-                                        <a href="https://haoruxue.github.io/">Haoru Xue</a>,
-                                        <a href="https://wenlixiao-cs.github.io/">Wenli Xiao</a>,
-                                        <a href="https://www.linkedin.com/in/zi-wang-b675aa236">Zi Wang</a>,
-                                        <a href="https://www.linkedin.com/in/simon-yuen-68ba851">Simon Yuen</a>,
-                                        <a href="https://jankautz.com/">Jan Kautz</a>,
-                                        <a href="https://www.linkedin.com/in/yanchang1">Yan Chang</a>,
-                                        <a href="https://www.umariqbal.info/">Umar Iqbal</a>,
-                                        <a href="https://jimfan.me">Linxi "Jim" Fan</a><sup>‡</sup>,
-                                        <a href="https://yukezhu.me">Yuke Zhu</a><sup>‡</sup>
-                                        <br>
-                                        <em>arXiv preprint</em>, 2025<br>
-                                        <span style="float:right;">
-                                            <a href="https://nvlabs.github.io/SONIC/static/pdf/sonic_paper.pdf">Paper</a> |
-                                            <a href="https://nvlabs.github.io/SONIC/">Project</a> |
-                                            <a href="https://arxiv.org/abs/2511.07820">Arxiv</a>
-                                        </span>
-                                    </p>
-                                </td>
-                        </tr>
+                <!-- Diverse Dance Motions -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_diverseMotionTransfer.png" alt="Diverse dance motion generation" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Learning to Generate Diverse Dance Motions with Transformer</h3>
+                        <p class="pub-authors">
+                            <a href="http://lijiaman.github.io/">Jiaman Li</a>,
+                            <a href="https://somedaywilldo.github.io/">Yihang Yin</a>,
+                            <a href="http://chuhang.github.io/">Hang Chu</a>,
+                            <a href="https://zhouyisjtu.github.io/">Yi Zhou</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp;
+                            <a href="http://www.hao-li.com/Hao_Li/Hao_Li_-_about_me.html">Hao Li</a>
+                        </p>
+                        <p class="pub-venue"><em>Arxiv</em>, 2020</p>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2008.08171">Arxiv</a>
+                            <a href="https://www.youtube.com/watch?v=_nQC27KW5tM">Video</a>
+                            <a href="https://github.com/lijiaman/motion_transformer">Code</a>
+                        </div>
+                    </div>
+                </article>
 
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/mfm.gif" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Machine Learning Models for Generative Human Motion Simulation</heading><br>
-                                    <a href='https://xbpeng.github.io/'>Xue Bin Peng</a>, 
-                                    <a href='https://ye-yuan.com/'>Ye Yuan</a>, 
-                                    <a href='https://davrempe.github.io/'>Davis Rempe</a>, 
-                                    <a href='https://umariqbal.info/'>Umar Iqbal</a>, 
-                                    <a href='https://orlitany.github.io/'>Or Litany</a>, 
-                                    <strong>Tingwu Wang</strong>, 
-                                    <a href='https://tesslerc.github.io/'>Chen Tessler</a>, 
-                                    <a href='https://jankautz.com/'>Jan Kautz</a>, 
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> &
-                                    <a href='https://www.linkedin.com/in/michaelbuttner/'>Michael Buttner</a>
-                                    <br>
-                                    <em>Patent</em>, 2025<br>
+                <!-- MBBL -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_mbbl_front_index.png" alt="Model-based RL benchmarking" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Benchmarking Model-Based Reinforcement Learning</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://ca.linkedin.com/in/xuchan-bao-328b8810a">Xuchan Bao</a>,
+                            <a href="https://iclavera.github.io/">Ignasi Clavera</a>,
+                            <a href="https://www.linkedin.com/in/jerrick-hoang-06093035/">Jerrick Hoang</a>,
+                            <a href="http://www.cs.toronto.edu/~ywen/">Yeming Wen</a>,
+                            <a href="https://www.linkedin.com/in/edtsft/?originalSubdomain=ca">Eric Langlois</a>,
+                            <a href="https://www.linkedin.com/in/matthew-zhang-218253140/?originalSubdomain=ca">Shunshi Zhang</a>,
+                            <a href="http://www.cs.toronto.edu/~gdzhang/">Guodong Zhang</a>,
+                            <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> &amp;
+                            <a href="http://jimmylba.github.io/">Jimmy Ba</a>
+                        </p>
+                        <p class="pub-venue"><em>Arxiv</em>, 2019</p>
+                        <div class="pub-links">
+                            <a href="https://github.com/WilsonWangTHU/mbbl">Code</a>
+                            <a href="mbrl/mbrl.html">Project Page</a>
+                            <a href="https://arxiv.org/abs/1907.02057">Arxiv</a>
+                            <a href="mbrl/mbrl.pdf">PDF</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=HvJj-pEAAAAJ&sortby=pubdate&citation_for_view=HvJj-pEAAAAJ:M3ejUd6NZC8C">Link</a> |
-                                        <a href="https://youtu.be/c7PArTVAYEA?si=LNtY16d-eEupAVus&t=2620">Talk</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/inter_phys_teaser.gif" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Synthesizing Physical Character-Scene Interactions</heading><br>
-                                    <a href='https://mohamedhassanmus.github.io/'>Mohamed Hassan</a>,
-                                    <a href='https://www.linkedin.com/in/kelly-guo-18316982/'>Yunrong Guo</a>,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='https://ps.is.mpg.de/person/black'>Michael Black</a>,
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> &
-                                    <a href='https://xbpeng.github.io/'>Xue Bin Peng</a>
-                                    <br>
-                                    <em>SIGGRAPH</em>, 2023<br>
+                <!-- POPLIN -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_POPLIN_title.png" alt="POPLIN model-based planning" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Exploring Model-based Planning with Policy Networks</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>
+                            &amp; <a href="http://jimmylba.github.io/">Jimmy Ba</a>
+                        </p>
+                        <p class="pub-venue"><em>8th International Conference on Learning Representations (ICLR)</em>, 2020</p>
+                        <div class="pub-links">
+                            <a href="https://github.com/WilsonWangTHU/POPLIN">Code</a>
+                            <a href="https://arxiv.org/abs/1906.08649">Arxiv</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://www.youtube.com/watch?v=q3hyQdaElQQ">Video</a> |
-                                        <a href="https://arxiv.org/abs/2302.00883">Arxiv</a> |
-                                        <a href="https://xbpeng.github.io/projects/InterPhys/index.html">Project Webpage</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/graphcon_teaser.png" alt="" loading="lazy" width="80%" style="border-style: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Learning Scalable Physics-based Motion Skills with Reinforcement Learning</heading><br>
-                                    <strong>Tingwu Wang</strong>
-                                    <br>
-                                    <em>PhD Thesis</em>, 2022<br>
+                <!-- Neural Graph Evolution -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_nge_title.png" alt="Neural graph evolution for robot design" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Neural Graph Evolution: Towards Efficient Automatic Robot Design</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>*,
+                            <a href="https://henryzhou7.github.io/">Henry Zhou</a>*,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp; <a href="http://jimmylba.github.io/">Jimmy Ba</a>
+                        </p>
+                        <p class="pub-venue"><em>7th International Conference on Learning Representations (ICLR)</em>, 2019</p>
+                        <div class="pub-links">
+                            <a href="http://www.cs.toronto.edu/~henryzhou/NGE_website/">Project Webpage</a>
+                            <a href="papers_slides/nte_slides.pdf">Slides</a>
+                            <a href="https://openreview.net/forum?id=BkgWHnR5tm">OpenReview</a>
+                            <a href="https://github.com/WilsonWangTHU/neural_graph_evolution">Code</a>
+                            <a href="https://www.youtube.com/watch?v=btyY-tFnRDw">Video</a>
+                            <a href="https://arxiv.org/abs/1906.05370">Arxiv</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://tspace.library.utoronto.ca/handle/1807/128326">Project Webpage</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_kinematics.png" alt="" loading="lazy" width="80%" style="filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Physics-based Human Motion Estimation and Synthesis from Videos</heading><br>
-                                    <a href='https://kevincxie.github.io/'>Kevin Xie</a>,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='http://www.umariqbal.info/'>Umar Iqbal</a>,
-                                    <a href='https://www.linkedin.com/in/kelly-guo-18316982/'>Yunrong Guo</a>,
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> &
-                                    <a href='http://www.cs.toronto.edu/~florian/'>Florian Shkurti</a>
-                                    <br>
-                                    <em>International Conference on Computer Vision, ICCV</em>, 2021<br>
+                <!-- NerveNet -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_nervenet.png" alt="NerveNet graph neural network policy" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">NerveNet: Learning Structured Policy with Graph Neural Networks</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>*,
+                            <a href="http://www.cs.toronto.edu/~rjliao/">Renjie Liao</a>*,
+                            <a href="http://jimmylba.github.io/">Jimmy Ba</a> &amp; <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a>
+                        </p>
+                        <p class="pub-venue"><em>6th International Conference on Learning Representations (ICLR)</em>, 2018</p>
+                        <div class="pub-links">
+                            <a href="nervenet/nervenet.html">Project Webpage</a>
+                            <a href="https://www.youtube.com/watch?v=ImSlirW1EI8">Video</a>
+                            <a href="https://openreview.net/forum?id=S1sqHMZCb">OpenReview</a>
+                            <a href="nervenet/nervenet_slides.pdf">Slides</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://www.youtube.com/watch?v=MrKlPvWvQ2Q">Two Minute Papers</a> |
-                                        <a href="https://arxiv.org/abs/2109.09913">Arxiv</a> |
-                                        <a href="https://nv-tlabs.github.io/physics-pose-estimation-project-page/">Project Webpage</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_unicon_cover.png" alt="" loading="lazy" width="80%" style="border: 1px solid #737070; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>UniCon: Universal Neural Controller For Physics-based Character Motion</heading><br>
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='https://github.com/kelBear'>Yunrong Guo</a>,
-                                    <a href='https://shumash.com/'>Maria Shugrina</a> &
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a>
-                                    <br>
-                                    <em>Arxiv</em>, 2020<br>
+                <!-- VirtualHome -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_virtualhouse.png" alt="VirtualHome household simulation" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">VirtualHome: Simulating Household Activities via Programs</h3>
+                        <p class="pub-authors">
+                            <a href="http://people.csail.mit.edu/xavierpuig/">Xavier Puig</a>,
+                            <a href="https://github.com/kevinra">Kevin Ra</a>,
+                            <a href="https://www.fri.uni-lj.si/en/employees/marko-boben">Marko Boben</a>,
+                            <a href="http://lijiaman.github.io/">Jiaman Li</a>,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="http://www.cs.toronto.edu/~fidler">Sanja Fidler</a> &amp;
+                            <a href="http://web.mit.edu/torralba/www/">Antonio Torralba</a>
+                        </p>
+                        <p class="pub-venue"><em>Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2018 <strong>(Oral)</strong></p>
+                        <div class="pub-links">
+                            <a href="http://virtual-home.org/">Project Webpage</a>
+                            <a href="papers_slides/virtualhouse_slides.pdf">Slides</a>
+                            <a href="https://www.youtube.com/watch?v=BB5-N9AIqP8">Talk</a>
+                            <a href="https://arxiv.org/pdf/1806.07011.pdf">Arxiv</a>
+                            <a href="https://www.bbc.com/news/av/technology-44319044/the-robots-taking-on-your-housework">BBC News</a>
+                            <a href="http://news.mit.edu/2018/mit-csail-teaching-chores-artificial-agent-0530">MIT News</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://nv-tlabs.github.io/unicon/">Project Webpage</a> |
-                                        <a href="https://arxiv.org/abs/2011.15119">Arxiv</a> |
-                                        <a href="https://nv-tlabs.github.io/unicon/resources/teaser.mp4">Teaser Demo</a> |
-                                        <a href="https://nv-tlabs.github.io/unicon/resources/main_demo.mp4">Video</a> |
-                                        <a href="https://nv-tlabs.github.io/unicon/resources/main.pdf">PDF</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_diverseMotionTransfer.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Learning to Generate Diverse Dance Motions with Transformer</heading><br>
-                                    <a href='http://lijiaman.github.io/'>Jiaman Li</a>,
-                                    <a href='https://somedaywilldo.github.io/'>Yihang Yin</a>,
-                                    <a href='http://chuhang.github.io/'>Hang Chu</a>,
-                                    <a href='https://zhouyisjtu.github.io/'>Yi Zhou</a>,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> &
-                                    <a href='http://www.hao-li.com/Hao_Li/Hao_Li_-_about_me.html'>Hao Li</a><br>
-                                    <em>Arxiv</em>, 2020<br>
+                <!-- WCNC -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_epochs.png" alt="Solar energy WiFi access point selection" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Access Points Selection in Super WiFi Network Powered by Solar Energy Harvesting</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>,
+                            <a href="http://www.jiangchunxiao.net/index.html">Chunxiao Jiang</a> &amp;
+                            <a href="https://www.ee.tsinghua.edu.cn/en/info/1070/1317.htm">Yong Ren</a>
+                        </p>
+                        <p class="pub-venue"><em>IEEE Wireless Communications and Networking Conference (WCNC)</em>, 2016</p>
+                        <div class="pub-links">
+                            <a href="papers_slides/wcnc.pdf">PDF</a>
+                            <a href="https://ieeexplore.ieee.org/document/7564863">IEEE Webpage</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://arxiv.org/abs/2008.08171">Arxiv</a> |
-                                        <a href="https://www.youtube.com/watch?v=_nQC27KW5tM">Video</a> |
-                                        <a href="https://github.com/lijiaman/motion_transformer">Code</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_mbbl_front_index.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Benchmarking Model-Based Reinforcement Learning</heading><br>
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='https://ca.linkedin.com/in/xuchan-bao-328b8810a'>Xuchan Bao</a>,
-                                    <a href='https://iclavera.github.io/'>Ignasi Clavera</a>,
-                                    <a href='https://www.linkedin.com/in/jerrick-hoang-06093035/'>Jerrick Hoang</a>,
-                                    <a href='http://www.cs.toronto.edu/~ywen/'>Yeming Wen</a>,
-                                    <a href='https://www.linkedin.com/in/edtsft/?originalSubdomain=ca'>Eric Langlois</a>,
-                                    <a href='https://www.linkedin.com/in/matthew-zhang-218253140/?originalSubdomain=ca'>Shunshi Zhang</a>,
-                                    <a href='http://www.cs.toronto.edu/~gdzhang/'>Guodong Zhang</a>,
-                                    <a href='https://people.eecs.berkeley.edu/~pabbeel/'>Pieter Abbeel</a> &
-                                    <a href='http://jimmylba.github.io/'>Jimmy Ba</a><br>
-                                    <em>Arxiv</em>, 2019<br>
+                <!-- VTC -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_vtc16.png" alt="Energy harvesting POMDP WiFi access" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Access Strategy in Energy Harvesting Super WiFi Network: A POMDP Method</h3>
+                        <p class="pub-authors">
+                            <strong>Tingwu Wang</strong>,
+                            <a href="http://web.ee.tsinghua.edu.cn/wangjian1/en/index.htm">Jian Wang</a>,
+                            <a href="http://www.jiangchunxiao.net/index.html">Chunxiao Jiang</a>,
+                            <a href="https://scholar.google.com/citations?user=c32E_h4AAAAJ&hl=en">Jingjing Wang</a> &amp;
+                            <a href="https://www.ee.tsinghua.edu.cn/en/info/1070/1317.htm">Yong Ren</a>
+                        </p>
+                        <p class="pub-venue"><em>IEEE 83rd Vehicular Technology Conference (VTC)</em>, 2016</p>
+                        <div class="pub-links">
+                            <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7504116">PDF</a>
+                            <a href="https://arxiv.org/abs/1701.00241">Arxiv</a>
+                            <a href="https://ieeexplore.ieee.org/document/7504116">IEEE Webpage</a>
+                            <a href="https://github.com/WilsonWangTHU/GLOBECOM_SIM">Code</a>
+                        </div>
+                    </div>
+                </article>
 
-                                    <span style="float:right;">
-                                        <a href="https://github.com/WilsonWangTHU/mbbl">Code</a> |
-                                        <a href="mbrl/mbrl.html">Project Page</a> |
-                                        <a href="https://arxiv.org/abs/1907.02057">Arxiv</a> |
-                                        <a href="mbrl/mbrl.pdf">PDF</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_POPLIN_title.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Exploring Model-based Planning with Policy Networks</heading><br>
-                                    <strong>Tingwu Wang</strong>
-                                    & <a href='http://jimmylba.github.io/'>Jimmy Ba</a><br>
-                                    <em>8th International Conference on Learning Representations (ICLR)</em>, 2020 <br>
+                <!-- Costume Detection Patent -->
+                <article class="pub-card animate-on-scroll">
+                    <div class="pub-card-thumb">
+                        <img src="resources/thumbnail_dataset.jpg" alt="Costume detection dataset" loading="lazy">
+                    </div>
+                    <div class="pub-card-info">
+                        <h3 class="pub-title">Costume Detection and Attribute Value Identification Method and System</h3>
+                        <p class="pub-authors">
+                            <a href="https://puzzledqs.github.io/">Qiu Shi</a>,
+                            Po Man Cheng,
+                            <strong>Tingwu Wang</strong>,
+                            <a href="https://scholar.google.com/citations?user=K8oom-cAAAAJ&hl=en">Yan Xia</a> &amp;
+                            <a href="http://www.statfe.com/index.html">Wei Zhang</a>.
+                        </p>
+                        <p class="pub-venue">Patent: <em>CN105447529 A</em>, 2016.</p>
+                        <p class="pub-note">
+                            Work done as an intern in SenseTime. Contributions used in <a href="https://liuziwei7.github.io/projects/DeepFashion.html">DeepFashion</a>.
+                        </p>
+                    </div>
+                </article>
+            </section>
 
-                                    <span style="float:right;">
-                                        <a href="https://github.com/WilsonWangTHU/POPLIN">Code</a> |
-                                        <a href="https://arxiv.org/abs/1906.08649">Arxiv</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_nge_title.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Neural Graph Evolution: Towards Efficient Automatic Robot Design</heading><br>
-                                    <strong>Tingwu Wang</strong>*,
-                                    <a href='https://henryzhou7.github.io/'>Henry Zhou</a>*,
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> & <a href='http://jimmylba.github.io/'>Jimmy Ba</a><br>
-                                    <em>7th International Conference on Learning Representations (ICLR)</em>, 2019 <br>
+            <!-- ===== Teaching ===== -->
+            <section id="teaching">
+                <h2 class="section-heading">Teaching</h2>
+                <ul class="teaching-list">
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="http://www.teach.cs.toronto.edu/~csc420h/fall/">CSC 420: Introduction to Image Understanding</a></strong></span>
+                            <span class="date">Aug. 2016 - Dec. 2016</span>
+                        </div>
+                    </li>
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="http://www.cs.toronto.edu/~kyros/courses/320/">CSC 320: Introduction to Visual Computing</a></strong></span>
+                            <span class="date">Jan. 2017 - Mar. 2017</span>
+                        </div>
+                    </li>
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="http://www.cs.toronto.edu/~jlucas/teaching/csc411/">CSC 411: Introduction to Machine Learning</a></strong></span>
+                            <span class="date">Aug. 2017 - Jan. 2018</span>
+                        </div>
+                    </li>
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="http://www.cs.toronto.edu/~guerzhoy/411/">CSC 411: Machine Learning and Data Mining</a></strong></span>
+                            <span class="date">Jan. 2018 - Mar. 2018</span>
+                        </div>
+                    </li>
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="https://jimmylba.github.io/">CSC 2541: Topics in Machine Learning: Deep Reinforcement Learning</a></strong></span>
+                            <span class="date">Aug. 2018 - Jan. 2019</span>
+                        </div>
+                    </li>
+                    <li class="animate-on-scroll">
+                        <div class="teaching-item-row">
+                            <span>Teaching Assistant, <strong><a href="https://www.pair.toronto.edu/csc2621-w20/">CSC 2621: Topics in Robotics: Deep Reinforcement Learning</a></strong></span>
+                            <span class="date">Jan. 2020 - Mar. 2020</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
 
-                                    <span style="float:right;">
-                                        <a href="http://www.cs.toronto.edu/~henryzhou/NGE_website/">Project Webpage</a> |
-                                        <a href="papers_slides/nte_slides.pdf">Slides</a> |
-                                        <a href="https://openreview.net/forum?id=BkgWHnR5tm">OpenReview</a> |
-                                        <a href="https://github.com/WilsonWangTHU/neural_graph_evolution">Code</a> |
-                                        <a href="https://www.youtube.com/watch?v=btyY-tFnRDw">Video</a> |
-                                        <a href="https://arxiv.org/abs/1906.05370">Arxiv</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_nervenet.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>NerveNet: Learning Structured Policy with Graph Neural Networks</heading><br>
-                                    <strong>Tingwu Wang</strong>*,
-                                    <a href='http://www.cs.toronto.edu/~rjliao/'>Renjie Liao</a>*,
-                                    <a href='http://jimmylba.github.io/'>Jimmy Ba</a> & <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a><br>
-                                    <em>6th International Conference on Learning Representations (ICLR)</em>, 2018 <br>
+            <!-- ===== Tutorials ===== -->
+            <section id="tutorials">
+                <h2 class="section-heading">Tutorial</h2>
+                <ul class="teaching-list">
+                    <li class="animate-on-scroll">
+                        Tutorial on <a href="papers_slides/trpo.pdf">Trust Region Policy Optimization</a>
+                    </li>
+                    <li class="animate-on-scroll">
+                        Tutorial on model-based RL: <a href="papers_slides/model_based_rl.pdf">A Step Closer to Model Based Reinforcement Learning</a>
+                    </li>
+                    <li class="animate-on-scroll">
+                        Tutorial on <a href="papers_slides/REINFORCE.pdf">Reinforcement Learning: Policy Gradient</a> in
+                        <strong><a href="http://www.teach.cs.toronto.edu/~csc411h/winter/">CSC 411: Introduction to Machine Learning</a></strong>
+                    </li>
+                    <li class="animate-on-scroll">
+                        Tutorial on <a href="papers_slides/RL_tutorial.pdf">Reinforcement Learning: Q-Learning</a> in
+                        <strong><a href="http://www.cs.toronto.edu/~jlucas/teaching/csc411/index.html">CSC 411: Introduction to Machine Learning</a></strong>
+                    </li>
+                    <li class="animate-on-scroll">
+                        Tutorial on <a href="papers_slides/semantic_segmentation.pdf">Semantic Segmentation</a> in
+                        <strong><a href="http://www.teach.cs.toronto.edu/~csc420h/fall/">CSC 420: Introduction to Image Understanding</a></strong>
+                    </li>
+                    <li class="animate-on-scroll">
+                        Tutorial on <a href="papers_slides/rnn_tutorial.pdf">Recurrent Neural Network</a> in
+                        <strong><a href="http://www.cs.toronto.edu/~urtasun/courses/CSC2541_Winter17/CSC2541_Winter17.html">CSC2541: Sport Analytics</a></strong>
+                    </li>
+                </ul>
+            </section>
 
-                                    <span style="float:right;">
-                                        <a href="nervenet/nervenet.html">Project Webpage</a> |
-                                        <a href="https://www.youtube.com/watch?v=ImSlirW1EI8">Video</a> |
-                                        <a href="https://openreview.net/forum?id=S1sqHMZCb">OpenReview</a> |
-                                        <a href='nervenet/nervenet_slides.pdf'>Slides</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_virtualhouse.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>VirtualHome: Simulating Household Activities via Programs</heading><br>
-                                    <a href='http://people.csail.mit.edu/xavierpuig/'>Xavier Puig</a>,
-                                    <a href='https://github.com/kevinra'>Kevin Ra</a>,
-                                    <a href='https://www.fri.uni-lj.si/en/employees/marko-boben'>Marko Boben</a>,
-                                    <a href='http://lijiaman.github.io/'>Jiaman Li</a>,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='http://www.cs.toronto.edu/~fidler'>Sanja Fidler</a> &
-                                    <a href='http://web.mit.edu/torralba/www/'>Antonio Torralba</a><br>
-                                    
-                                    <em>Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2018 <strong>(Oral)</strong> <br>
+            <!-- ===== About Myself ===== -->
+            <section id="myself" class="about-section">
+                <h2 class="section-heading">About Myself (<img src="resources/tingwu.png" alt="Chinese characters for Tingwu" style="height: 40px; vertical-align: middle;"> or Ting-Wu Wang)</h2>
+                <p>
+                    I was born in <a href="https://www.youtube.com/watch?v=f55mg097gSo">Changsha</a>. I was named by my grandfather, where "Ting-wu" means "the exact midday". The name comes from the <em>Commentary on the Water Classic</em> written by an ancient Chinese geographer called <em>Li Daoyuan</em>:<br>
+                    <img class="poem-img" src="resources/poem.png" alt="Chinese poem excerpt">
+                    <span class="poem-translation">"To witness the Sun and the Moon, one shall wait until the exact midday or midnight."</span>
+                </p>
+            </section>
 
-                                    <span style="float:right;">
-                                        <a href="http://virtual-home.org/">Project Webpage</a> |
-                                        <a href="papers_slides/virtualhouse_slides.pdf">Slides</a> |
-                                        <a href="https://www.youtube.com/watch?v=BB5-N9AIqP8">Talk</a> |
-                                        <a href="https://arxiv.org/pdf/1806.07011.pdf">Arxiv</a> |
-                                        <a href="https://www.bbc.com/news/av/technology-44319044/the-robots-taking-on-your-housework">BBC News</a> |
-                                        <a href="http://news.mit.edu/2018/mit-csail-teaching-chores-artificial-agent-0530">MIT News</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_epochs.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Access Points Selection in Super WiFi Network Powered by Solar Energy Harvesting</heading><br>
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href="http://www.jiangchunxiao.net/index.html">Chunxiao Jiang</a> &
-                                    <a href="https://www.ee.tsinghua.edu.cn/en/info/1070/1317.htm">Yong Ren</a> <br>
-                                    <em>IEEE Wireless Communications and Networking Conference (WCNC)</em>, 2016 <br>
+            <!-- ===== Footer ===== -->
+            <footer class="site-footer">
+                Last Update: February, 2026;
+                special thanks to Mr. <a href="http://www.cs.utoronto.ca/~luzhc/">Zhicong Lu</a>,
+                Mr. <a href="http://www.cs.toronto.edu/~zzhang/">Ziyu Zhang</a>,
+                Mr. <a href="http://www.cs.toronto.edu/~byang/">Bin Yang</a>,
+                Ms. Rachel Ye,
+                <br>
+                my supervisor Prof. <a href="http://www.cs.utoronto.ca/%7Efidler/">Sanja Fidler</a> for their help when I first arrived in this country.
+                Thank you Mia Ma for being by my side :)!
+                <br>
+                Your help is so important to me, and I will always be grateful ;P
+                <br>
+                Template: <a href="http://people.eecs.berkeley.edu/~pathak/">this/that</a>,
+                <a href="http://www.cs.berkeley.edu/~barron/">ce/cette</a>,
+                <a href="http://www.cs.berkeley.edu/~akar/">das/der</a>,
+                <a href="http://www.cs.berkeley.edu/~sgupta/">kono/sono</a> and
+                <a href="http://jeffdonahue.com/">zhege/nage</a>.
+            </footer>
+        </main>
 
-                                    <span style="float:right;">
-                                        <a href="papers_slides/wcnc.pdf">PDF</a> |
-                                        <a href="https://ieeexplore.ieee.org/document/7564863">IEEE Webpage</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_vtc16.png" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Access Strategy in Energy Harvesting Super WiFi Network: A POMDP Method</heading><br>
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href="http://web.ee.tsinghua.edu.cn/wangjian1/en/index.htm">Jian Wang</a>,
-                                    <a href="http://www.jiangchunxiao.net/index.html">Chunxiao Jiang</a>,
-                                    <a href='https://scholar.google.com/citations?user=c32E_h4AAAAJ&hl=en'>Jingjing Wang</a> &
-                                    <a href="https://www.ee.tsinghua.edu.cn/en/info/1070/1317.htm">Yong Ren</a> <br>
-                                    <em>IEEE 83rd Vehicular Technology Conference (VTC)</em>, 2016 <br>
-
-                                    <span style="float:right;">
-                                        <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7504116">PDF</a> |
-                                        <a href="https://arxiv.org/abs/1701.00241">Arxiv</a> |
-                                        <a href="https://ieeexplore.ieee.org/document/7504116">IEEE Webpage</a> |
-                                        <a href="https://github.com/WilsonWangTHU/GLOBECOM_SIM">Code</a>
-                                    </span>
-                                    </p>
-                                </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" valign="top" align="center">
-                                <img src="resources/thumbnail_dataset.jpg" alt="" loading="lazy" width="80%" style="border: 1px solid #201f1f; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));">
-                                <td width="67%" valign="top">
-                                    <p><heading>Costume Detection and Attribute Value Identification Method and System</heading><br>
-                                    <a href='https://puzzledqs.github.io/'>Qiu Shi</a>,
-                                    Po Man Cheng,
-                                    <strong>Tingwu Wang</strong>,
-                                    <a href='https://scholar.google.com/citations?user=K8oom-cAAAAJ&hl=en'>Yan Xia</a> &
-                                    <a href='http://www.statfe.com/index.html'>Wei Zhang</a>.
-                                    Patent: <em>CN105447529 A</em>, 2016.<br>
-
-                                    Work done as an intern in SenseTime. Contributions used in <a href="https://liuziwei7.github.io/projects/DeepFashion.html">DeepFashion</a>.
-
-                                    </p>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <tr><td><sectionheading>Teaching</sectionheading>
-                                <p>
-                                <ul>
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.teach.cs.toronto.edu/~csc420h/fall/">CSC 420: Introduction to Image Understanding</a>
-                                        </span>
-                                        <span style="float:right;">Aug. 2016 - Dec. 2016</span>
-                                    </li>
-
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.cs.toronto.edu/~kyros/courses/320/">CSC 320: Introduction to Visual Computing</a>
-                                        </span>
-                                        <span style="float:right;">Jan. 2017 - Mar. 2017</span>
-                                    </li>
-
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.cs.toronto.edu/~jlucas/teaching/csc411/">CSC 411: Introduction to Machine Learning</a>
-                                        </span>
-                                        <span style="float:right;">Aug. 2017 - Jan. 2018</span>
-                                    </li>
-
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.cs.toronto.edu/~guerzhoy/411/">CSC 411: Machine Learning and Data Mining</a>
-                                        </span>
-                                        <span style="float:right;">Jan. 2018 - Mar. 2018</span>
-                                    </li>
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="https://jimmylba.github.io/">CSC 2541: Topics in Machine Learning: Deep Reinforcement Learning</a>
-                                        </span>
-                                        <span style="float:right;">Aug. 2018 - Jan. 2019</span>
-                                    </li>
-                                    <li>
-                                        Teaching Assistant,
-                                        <span style="font-weight: bold;">
-                                            <a href="https://www.pair.toronto.edu/csc2621-w20/">
-                                            CSC 2621: Topics in Robotics: Deep Reinforcement Learning</a>
-                                        </span>
-                                        <span style="float:right;">Jan. 2020 - Mar. 2020</span>
-                                    </li>
-                                </ul>
-
-                                </p>
-                            </td>
-
-                        </tr>
-                    </table>
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-
-
-                        <tr><td><sectionheading>Tutorial</sectionheading>
-                                <p>
-                                <ul>
-                                    <li>
-                                        Tutorial on <a href='papers_slides/trpo.pdf'>Trust Region Policy Optimization</a>
-                                    </li>
-                                    <li>
-                                        Tutorial on model-based RL: <a href='papers_slides/model_based_rl.pdf'>A Step Closer to Model Based Reinforcement Learning</a>
-                                    </li>
-
-                                    <li>
-                                        Tutorial on <a href='papers_slides/REINFORCE.pdf'>Reinforcement Learning: Policy Gradient</a> in
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.teach.cs.toronto.edu/~csc411h/winter/">CSC 411: Introduction to Machine Learning</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Tutorial on <a href='papers_slides/RL_tutorial.pdf'>Reinforcement Learning: Q-Learning</a> in
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.cs.toronto.edu/~jlucas/teaching/csc411/index.html">CSC 411: Introduction to Machine Learning</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Tutorial on <a href='papers_slides/semantic_segmentation.pdf'>Semantic Segmentation</a> in
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.teach.cs.toronto.edu/~csc420h/fall/">CSC 420: Introduction to Image Understanding</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Tutorial on <a href='papers_slides/rnn_tutorial.pdf'>Recurrent Neural Network</a> in
-                                        <span style="font-weight: bold;">
-                                            <a href="http://www.cs.toronto.edu/~urtasun/courses/CSC2541_Winter17/CSC2541_Winter17.html">CSC2541: Sport Analytics</a>
-                                        </span>
-                                    </li>
-
-                                </ul>
-
-                                </p>
-                            </td>
-
-                        </tr>
-                    </table>
-
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <tr><td><sectionheading>About Myself (<img align="top" src='resources/tingwu.png' style="height: 40px;"> or Ting-Wu Wang)</sectionheading></td></tr>
-                    </table>
-                    <table width="100%" align="center" border="0" cellpadding="20">
-                        <tr>
-                            <td width="100%" valign="center">
-                                <p>
-                                I was born in <a href="https://www.youtube.com/watch?v=f55mg097gSo">Changsha</a>. I was named by my grandfather, where "Ting-wu" means "the exact midday". The name comes from the <em>Commentary on the Water Classic</em> written by an ancient Chinese geographer called <em>Li Daoyuan</em>:<br>
-                                <span class="text-center"><img style="height:50px;" align="top" src="resources/poem.png"></span>
-                                <span style="float:right">"To witness the Sun and the Moon, one shall wait until the exact midday or midnight."</span> 
-                                </p>
-                            </td>
-
-                        </tr>
-                    </table>
-
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                        <tr>
-                            <td><p align="right"><font size="2">
-                                    <br>Last Update: February, 2026;
-                                    special thanks to Mr. <a href="http://www.cs.utoronto.ca/~luzhc/">Zhicong Lu</a>,
-                                    Mr. <a href="http://www.cs.toronto.edu/~zzhang/">Ziyu Zhang</a>,
-                                    Mr. <a href="http://www.cs.toronto.edu/~byang/">Bin Yang</a>,
-                                    Ms. Rachel Ye,
-                                    <br>
-                                    my supervisor Prof. <a href="http://www.cs.utoronto.ca/%7Efidler/">Sanja Fidler</a> for their help when I first arrived in this country.
-                                    Thank you Mia Ma for being by my side :)!
-                                    <br>
-                                    Your help is so important to me, and I will always be grateful ;P
-                                    <br>
-
-                                    Template: <a href='http://people.eecs.berkeley.edu/~pathak/'>this/that</a>,
-                                    <a href="http://www.cs.berkeley.edu/~barron/">ce/cette</a>,
-                                    <a href="http://www.cs.berkeley.edu/~akar/">das/der</a>,
-                                    <a href="http://www.cs.berkeley.edu/~sgupta/">kono/sono</a> and
-                                    <a href="http://jeffdonahue.com/">zhege/nage</a>.
-                                </font></p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+        <button class="back-to-top" aria-label="Back to top"></button>
+        <script src="script.js"></script>
     </body>
 </html>
