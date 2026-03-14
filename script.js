@@ -268,8 +268,6 @@ function initBackToTop() {
 
 /* ===== Init ===== */
 document.addEventListener('DOMContentLoaded', function () {
-    initStickyNav();
-    initActiveNav();
     initScrollAnimations();
     initParticleCanvas();
     initBackToTop();
