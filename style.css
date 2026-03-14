@@ -441,6 +441,40 @@ ul {
     transform: translateY(0);
 }
 
+/* ===== Typing Robot ===== */
+.typing-word {
+    opacity: 0;
+    transition: opacity 0.05s ease;
+}
+
+.typing-word.revealed {
+    opacity: 1;
+}
+
+.typing-robot {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+@keyframes typing-robot-blink {
+    0%, 45% { opacity: 1; }
+    50%, 95% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes typing-robot-celebrate {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    30% { transform: translateY(-12px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(360deg); }
+    70% { transform: translateY(0) rotate(360deg); }
+    100% { transform: translateY(0) rotate(360deg); opacity: 0; }
+}
+
+.typing-robot.celebrate {
+    animation: typing-robot-celebrate 1s ease forwards;
+}
+
 /* ===== Responsive: Tablet (768px) ===== */
 @media (max-width: 768px) {
     .hero-name {
@@ -539,6 +573,15 @@ ul {
     .back-to-top {
         transition: none;
     }
+
+    .typing-word {
+        opacity: 1 !important;
+        transition: none;
+    }
+
+    .typing-robot {
+        display: none;
+    }
 }
 
 /* ===== Print ===== */
@@ -546,7 +589,8 @@ ul {
     #particle-canvas,
     .site-nav,
     .theme-toggle,
-    .back-to-top {
+    .back-to-top,
+    .typing-robot {
         display: none;
     }
 

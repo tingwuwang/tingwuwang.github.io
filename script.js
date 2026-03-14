@@ -266,9 +266,212 @@ function initBackToTop() {
     });
 }
 
+/* ===== Typing Robot for Bio ===== */
+function initTypingRobot() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var bioText = document.querySelector('.hero-bio-text');
+    if (!bioText) return;
+
+    // Skip if hero is not in viewport (e.g. user followed anchor link)
+    var heroRect = bioText.getBoundingClientRect();
+    if (heroRect.top > window.innerHeight || heroRect.bottom < 0) return;
+
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+
+    function createTypingRobotSVG() {
+        var svg = document.createElementNS(SVG_NS, 'svg');
+        svg.setAttribute('width', '16');
+        svg.setAttribute('height', '16');
+        svg.setAttribute('viewBox', '0 0 16 16');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.classList.add('typing-robot');
+
+        // Head
+        var head = document.createElementNS(SVG_NS, 'rect');
+        head.setAttribute('x', '3');
+        head.setAttribute('y', '1');
+        head.setAttribute('width', '10');
+        head.setAttribute('height', '8');
+        head.setAttribute('rx', '2');
+        head.setAttribute('fill', '#1772d0');
+
+        // Left eye
+        var leftEye = document.createElementNS(SVG_NS, 'circle');
+        leftEye.setAttribute('cx', '6');
+        leftEye.setAttribute('cy', '5');
+        leftEye.setAttribute('r', '1.2');
+        leftEye.setAttribute('fill', '#fff');
+
+        // Right eye
+        var rightEye = document.createElementNS(SVG_NS, 'circle');
+        rightEye.setAttribute('cx', '10');
+        rightEye.setAttribute('cy', '5');
+        rightEye.setAttribute('r', '1.2');
+        rightEye.setAttribute('fill', '#fff');
+
+        // Blinking eyelids
+        var leftLid = document.createElementNS(SVG_NS, 'rect');
+        leftLid.setAttribute('x', '4.5');
+        leftLid.setAttribute('y', '3.5');
+        leftLid.setAttribute('width', '3');
+        leftLid.setAttribute('height', '3');
+        leftLid.setAttribute('fill', '#1772d0');
+        leftLid.setAttribute('opacity', '0');
+        leftLid.style.animation = 'typing-robot-blink 2.5s infinite';
+
+        var rightLid = document.createElementNS(SVG_NS, 'rect');
+        rightLid.setAttribute('x', '8.5');
+        rightLid.setAttribute('y', '3.5');
+        rightLid.setAttribute('width', '3');
+        rightLid.setAttribute('height', '3');
+        rightLid.setAttribute('fill', '#1772d0');
+        rightLid.setAttribute('opacity', '0');
+        rightLid.style.animation = 'typing-robot-blink 2.5s infinite';
+
+        // Typing arm
+        var arm = document.createElementNS(SVG_NS, 'line');
+        arm.setAttribute('x1', '13');
+        arm.setAttribute('y1', '7');
+        arm.setAttribute('x2', '15');
+        arm.setAttribute('y2', '12');
+        arm.setAttribute('stroke', '#1772d0');
+        arm.setAttribute('stroke-width', '1.5');
+        arm.setAttribute('stroke-linecap', 'round');
+
+        svg.appendChild(head);
+        svg.appendChild(leftEye);
+        svg.appendChild(rightEye);
+        svg.appendChild(leftLid);
+        svg.appendChild(rightLid);
+        svg.appendChild(arm);
+
+        return svg;
+    }
+
+    // Tokenize innerHTML: split into tags and text chunks
+    function tokenize(html) {
+        var tokens = [];
+        var tagRegex = /(<[^>]+>)/g;
+        var lastIndex = 0;
+        var match;
+
+        while ((match = tagRegex.exec(html)) !== null) {
+            if (match.index > lastIndex) {
+                tokens.push({ type: 'text', value: html.slice(lastIndex, match.index) });
+            }
+            tokens.push({ type: 'tag', value: match[1] });
+            lastIndex = tagRegex.lastIndex;
+        }
+
+        if (lastIndex < html.length) {
+            tokens.push({ type: 'text', value: html.slice(lastIndex) });
+        }
+
+        return tokens;
+    }
+
+    // Split text into words, preserving whitespace
+    function splitWords(text) {
+        var parts = [];
+        var wordRegex = /(\S+)/g;
+        var lastIndex = 0;
+        var match;
+
+        while ((match = wordRegex.exec(text)) !== null) {
+            if (match.index > lastIndex) {
+                parts.push({ type: 'space', value: text.slice(lastIndex, match.index) });
+            }
+            parts.push({ type: 'word', value: match[1] });
+            lastIndex = wordRegex.lastIndex;
+        }
+
+        if (lastIndex < text.length) {
+            parts.push({ type: 'space', value: text.slice(lastIndex) });
+        }
+
+        return parts;
+    }
+
+    // Process each <p> inside hero-bio-text
+    var paragraphs = bioText.querySelectorAll('p');
+    var allWordSpans = [];
+
+    paragraphs.forEach(function (p) {
+        var tokens = tokenize(p.innerHTML);
+        var newHTML = '';
+
+        tokens.forEach(function (token) {
+            if (token.type === 'tag') {
+                newHTML += token.value;
+            } else {
+                var parts = splitWords(token.value);
+                parts.forEach(function (part) {
+                    if (part.type === 'space') {
+                        newHTML += part.value;
+                    } else {
+                        newHTML += '<span class="typing-word">' + part.value + '</span>';
+                    }
+                });
+            }
+        });
+
+        p.innerHTML = newHTML;
+        var spans = p.querySelectorAll('.typing-word');
+        for (var i = 0; i < spans.length; i++) {
+            allWordSpans.push(spans[i]);
+        }
+    });
+
+    if (!allWordSpans.length) return;
+
+    // Create the typing robot SVG
+    var robot = createTypingRobotSVG();
+    allWordSpans[0].parentNode.insertBefore(robot, allWordSpans[0]);
+
+    var currentIndex = 0;
+    var punctuationRegex = /[.,;:!?]$/;
+
+    function revealNext() {
+        if (currentIndex >= allWordSpans.length) {
+            // Celebration animation
+            robot.classList.add('celebrate');
+            robot.addEventListener('animationend', function () {
+                if (robot.parentNode) robot.parentNode.removeChild(robot);
+            });
+            return;
+        }
+
+        var span = allWordSpans[currentIndex];
+        span.classList.add('revealed');
+
+        // Move robot after the current word
+        if (span.nextSibling) {
+            span.parentNode.insertBefore(robot, span.nextSibling);
+        } else {
+            span.parentNode.appendChild(robot);
+        }
+
+        currentIndex++;
+
+        // Timing: longer pause for punctuation
+        var text = span.textContent;
+        var delay = 50 + Math.random() * 40; // 50-90ms
+        if (punctuationRegex.test(text)) {
+            delay = 150;
+        }
+
+        setTimeout(revealNext, delay);
+    }
+
+    // Start with a small initial delay
+    setTimeout(revealNext, 300);
+}
+
 /* ===== Init ===== */
 document.addEventListener('DOMContentLoaded', function () {
-    initScrollAnimations();
-    initParticleCanvas();
-    initBackToTop();
+    var inits = [initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop];
+    inits.forEach(function (fn) {
+        try { fn(); } catch (e) { console.error(fn.name + ':', e); }
+    });
 });
