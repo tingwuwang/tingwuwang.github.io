@@ -216,7 +216,7 @@ ul {
 /* ===== Publication Cards ===== */
 .pub-card {
     display: flex;
-    gap: 6rem;
+    gap: 4rem;
     padding: 1.2rem 0;
 }
 
