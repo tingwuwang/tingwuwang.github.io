@@ -1,66 +1,23 @@
-/* ===== Sticky Nav Shadow ===== */
-function initStickyNav() {
-    var nav = document.querySelector('.site-nav');
-    if (!nav) return;
+/* ===== Theme Toggle ===== */
+function initThemeToggle() {
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
 
-    function onScroll() {
-        if (window.scrollY > 10) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
+    // The actual theme is applied pre-paint by the inline <head> script;
+    // here we just keep the button's accessible state in sync and handle clicks.
+    function sync(theme) {
+        var dark = theme === 'dark';
+        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', String(dark));
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-}
+    sync(document.documentElement.getAttribute('data-theme'));
 
-/* ===== Active Nav Highlighting ===== */
-function initActiveNav() {
-    var nav = document.querySelector('.site-nav');
-    if (!nav) return;
-
-    var links = nav.querySelectorAll('a[href^="#"]');
-    if (!links.length) return;
-
-    var sectionMap = [];
-    links.forEach(function (link) {
-        var id = link.getAttribute('href').slice(1);
-        var section = document.getElementById(id);
-        if (section) {
-            sectionMap.push({ link: link, section: section });
-        }
-    });
-
-    var currentActive = null;
-
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            // Store visibility state on the section element
-            entry.target._isInView = entry.isIntersecting;
-        });
-
-        // Find the first visible section (top-down order)
-        var activeLink = null;
-        for (var i = 0; i < sectionMap.length; i++) {
-            if (sectionMap[i].section._isInView) {
-                activeLink = sectionMap[i].link;
-                break;
-            }
-        }
-
-        if (activeLink !== currentActive) {
-            if (currentActive) currentActive.classList.remove('active');
-            if (activeLink) activeLink.classList.add('active');
-            currentActive = activeLink;
-        }
-    }, {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0
-    });
-
-    sectionMap.forEach(function (item) {
-        observer.observe(item.section);
+    btn.addEventListener('click', function () {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        sync(next);
     });
 }
 
@@ -468,9 +425,42 @@ function initTypingRobot() {
     setTimeout(revealNext, 300);
 }
 
+/* ===== Lazy Video Playback (GIF replacement) ===== */
+function initLazyVideos() {
+    var videos = document.querySelectorAll('video.lazy-video');
+    if (!videos.length) return;
+
+    // Respect reduced motion: leave the static poster frame, never autoplay.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function play(v) {
+        var p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+    }
+
+    // No IntersectionObserver: just play them all.
+    if (!('IntersectionObserver' in window)) {
+        for (var i = 0; i < videos.length; i++) play(videos[i]);
+        return;
+    }
+
+    // Only fetch + play a clip while it's near the viewport; pause when it leaves.
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                play(entry.target);
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { rootMargin: '200px 0px', threshold: 0.1 });
+
+    videos.forEach(function (v) { observer.observe(v); });
+}
+
 /* ===== Init ===== */
 document.addEventListener('DOMContentLoaded', function () {
-    var inits = [initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop];
+    var inits = [initThemeToggle, initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop, initLazyVideos];
     inits.forEach(function (fn) {
         try { fn(); } catch (e) { console.error(fn.name + ':', e); }
     });

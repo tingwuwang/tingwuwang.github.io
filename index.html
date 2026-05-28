@@ -5,6 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tingwu Wang</title>
         <meta name="description" content="Homepage of Tingwu Wang, Staff Research Scientist at NVIDIA GEAR">
+        <link rel="canonical" href="https://tingwuwang.github.io/">
+
+        <!-- Apply saved/system color theme before paint to avoid a flash -->
+        <script>
+          (function () {
+            try {
+              var stored = localStorage.getItem('theme');
+              var dark = stored ? stored === 'dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches;
+              document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            } catch (e) {}
+          })();
+        </script>
+
+        <!-- Favicon + browser UI color -->
+        <link rel="icon" href="favicon.svg" type="image/svg+xml">
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+
+        <!-- Open Graph / Twitter card (link previews) -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Tingwu Wang">
+        <meta property="og:description" content="Staff Research Scientist at NVIDIA GEAR — scalable, robust, generalist motion skills bridging the virtual and real worlds.">
+        <meta property="og:url" content="https://tingwuwang.github.io/">
+        <meta property="og:image" content="https://tingwuwang.github.io/resources/tingwu_head.jpg">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Tingwu Wang">
+        <meta name="twitter:description" content="Staff Research Scientist at NVIDIA GEAR — scalable, robust, generalist motion skills bridging the virtual and real worlds.">
+        <meta name="twitter:image" content="https://tingwuwang.github.io/resources/tingwu_head.jpg">
 
         <!-- Preconnect for Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,10 +52,51 @@
             gtag('config', 'G-XXXXXXXXXX');
         </script>
         -->
+
+        <!-- Structured data for search engines -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Tingwu Wang",
+          "alternateName": "王亭午",
+          "jobTitle": "Staff Research Scientist",
+          "worksFor": { "@type": "Organization", "name": "NVIDIA" },
+          "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "University of Toronto" },
+            { "@type": "CollegeOrUniversity", "name": "Tsinghua University" }
+          ],
+          "url": "https://tingwuwang.github.io/",
+          "image": "https://tingwuwang.github.io/resources/tingwu_head.jpg",
+          "sameAs": [
+            "https://scholar.google.com/citations?user=HvJj-pEAAAAJ&hl=en",
+            "https://github.com/WilsonWangTHU/",
+            "https://twitter.com/TingwuWang",
+            "https://www.linkedin.com/in/tingwu-wang-3a592baa/"
+          ]
+        }
+        </script>
     </head>
 
     <body>
         <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+        </button>
 
         <main class="site-container">
 
@@ -140,8 +210,12 @@
                 <!-- MotionBricks -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/motionbricks_animation_teaser.gif" alt="MotionBricks animation teaser" loading="lazy">
-                        <img src="resources/motionbricks_robotics_teaser.gif" alt="MotionBricks robotics teaser" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/motionbricks_animation_teaser.poster.jpg" aria-label="MotionBricks animation teaser">
+                            <source src="resources/motionbricks_animation_teaser.mp4" type="video/mp4">
+                        </video>
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/motionbricks_robotics_teaser.poster.jpg" aria-label="MotionBricks robotics teaser">
+                            <source src="resources/motionbricks_robotics_teaser.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">MotionBricks: Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitives</h3>
@@ -176,7 +250,9 @@
                 <!-- Kimodo -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/teaser_kimodo.gif" alt="Kimodo controllable 3D motion generation" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/teaser_kimodo.poster.jpg" aria-label="Kimodo controllable 3D motion generation">
+                            <source src="resources/teaser_kimodo.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">Kimodo: Scaling Controllable Human Motion Generation</h3>
@@ -220,7 +296,9 @@
                 <!-- CHIP -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/chip_overview.gif" alt="CHIP humanoid control overview" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/chip_overview.poster.jpg" aria-label="CHIP humanoid control overview">
+                            <source src="resources/chip_overview.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">CHIP: Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation</h3>
@@ -247,8 +325,12 @@
                 <!-- SONIC -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/sonic_overview.gif" alt="SONIC humanoid motion tracking overview" loading="lazy">
-                        <img src="resources/sonic_lawnmower.gif" alt="SONIC lawnmower demo" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/sonic_overview.poster.jpg" aria-label="SONIC humanoid motion tracking overview">
+                            <source src="resources/sonic_overview.mp4" type="video/mp4">
+                        </video>
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/sonic_lawnmower.poster.jpg" aria-label="SONIC lawnmower demo">
+                            <source src="resources/sonic_lawnmower.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control</h3>
@@ -292,7 +374,9 @@
                 <!-- MFM Patent -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/mfm.gif" alt="Generative human motion simulation" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/mfm.poster.jpg" aria-label="Generative human motion simulation">
+                            <source src="resources/mfm.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">Machine Learning Models for Generative Human Motion Simulation</h3>
@@ -319,7 +403,9 @@
                 <!-- InterPhys -->
                 <article class="pub-card animate-on-scroll">
                     <div class="pub-card-thumb">
-                        <img src="resources/inter_phys_teaser.gif" alt="Physical character-scene interactions" loading="lazy">
+                        <video class="lazy-video" loop muted playsinline preload="none" poster="resources/inter_phys_teaser.poster.jpg" aria-label="Physical character-scene interactions">
+                            <source src="resources/inter_phys_teaser.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="pub-card-info">
                         <h3 class="pub-title">Synthesizing Physical Character-Scene Interactions</h3>
