@@ -525,70 +525,70 @@ function initTilt() {
     });
 }
 
-/* ===== Konami Code: a parade of walking robots ===== */
-function initKonami() {
-    var SEQ = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown',
-               'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
-    var pos = 0;
-    var active = false;
+/* ===== Easter egg: G1 rescue-breathing clip (Konami code, or type "911") ===== */
+function initEasterEgg() {
+    var KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown',
+                  'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+    var kpos = 0;
+    var typed = '';
+    var overlay = null;
 
     document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { close(); return; }
         var k = (e.key || '').toLowerCase();
-        if (k === SEQ[pos]) {
-            pos++;
-            if (pos === SEQ.length) { pos = 0; parade(); }
+
+        // Konami code
+        if (k === KONAMI[kpos]) {
+            kpos++;
+            if (kpos === KONAMI.length) { kpos = 0; open(); }
         } else {
-            pos = (k === SEQ[0]) ? 1 : 0;
+            kpos = (k === KONAMI[0]) ? 1 : 0;
+        }
+
+        // Type "911"
+        if (k.length === 1 && k >= '0' && k <= '9') {
+            typed = (typed + k).slice(-3);
+            if (typed === '911') { typed = ''; open(); }
         }
     });
 
-    function makeWalker() {
-        var d = document.createElement('div');
-        d.className = 'walker';
-        d.setAttribute('aria-hidden', 'true');
-        d.innerHTML =
-            '<svg viewBox="0 0 34 44" width="34" height="44">' +
-                '<g class="walker-body">' +
-                    '<rect class="arm-l" x="6" y="17" width="3" height="11" rx="1.5"/>' +
-                    '<rect class="arm-r" x="25" y="17" width="3" height="11" rx="1.5"/>' +
-                    '<rect x="9" y="2" width="16" height="13" rx="3"/>' +
-                    '<circle class="eye" cx="14" cy="8" r="1.8"/>' +
-                    '<circle class="eye" cx="20" cy="8" r="1.8"/>' +
-                    '<rect x="10" y="15" width="14" height="14" rx="2"/>' +
-                '</g>' +
-                '<rect class="leg-l" x="12" y="28" width="3.6" height="14" rx="1.6"/>' +
-                '<rect class="leg-r" x="18.4" y="28" width="3.6" height="14" rx="1.6"/>' +
-            '</svg>';
-        return d;
+    function open() {
+        if (overlay) return;
+        overlay = document.createElement('div');
+        overlay.className = 'egg-overlay';
+        overlay.innerHTML =
+            '<button class="egg-close" type="button" aria-label="Close">×</button>' +
+            '<p class="egg-caption">🚨 G1 down! Performing rescue breathing… 🚨</p>' +
+            '<video class="egg-video" playsinline controls poster="resources/g1_call_911.poster.jpg">' +
+                '<source src="resources/g1_call_911.mp4" type="video/mp4">' +
+            '</video>' +
+            '<p class="egg-hint">click outside, ×, or Esc to close</p>';
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay ||
+                (e.target.classList && e.target.classList.contains('egg-close'))) {
+                close();
+            }
+        });
+
+        var video = overlay.querySelector('video');
+        var p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {}); // controls remain if autoplay is blocked
     }
 
-    function parade() {
-        if (active) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        active = true;
-
-        var made = [];
-        for (var i = 0; i < 6; i++) {
-            var w = makeWalker();
-            w.style.animationDelay = (i * 0.55) + 's';
-            document.body.appendChild(w);
-            made.push(w);
-        }
-
-        function cleanup() {
-            made.forEach(function (el) { if (el.parentNode) el.parentNode.removeChild(el); });
-            active = false;
-        }
-        made[made.length - 1].addEventListener('animationend', function (e) {
-            if (e.animationName === 'walk-across') cleanup();
-        });
-        setTimeout(cleanup, 13000); // safety net
+    function close() {
+        if (!overlay) return;
+        var v = overlay.querySelector('video');
+        if (v) v.pause();
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        overlay = null;
     }
 }
 
 /* ===== Init ===== */
 document.addEventListener('DOMContentLoaded', function () {
-    var inits = [initThemeToggle, initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop, initLazyVideos, initTilt, initKonami];
+    var inits = [initThemeToggle, initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop, initLazyVideos, initTilt, initEasterEgg];
     inits.forEach(function (fn) {
         try { fn(); } catch (e) { console.error(fn.name + ':', e); }
     });

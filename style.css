@@ -6,6 +6,7 @@
     --color-text-secondary: #000000;
     --color-link: #1772d0;
     --color-link-hover: #f09228;
+    --color-highlight: #a4133c;
     --color-border: #e0e0e0;
     --color-card-bg: #ffffff;
     --color-card-shadow: rgba(0, 0, 0, 0.08);
@@ -27,6 +28,7 @@
     --color-text-secondary: #8b949e;
     --color-link: #58a6ff;
     --color-link-hover: #f0a868;
+    --color-highlight: #f2718f;
     --color-border: #30363d;
     --color-card-bg: #161b22;
     --color-card-shadow: rgba(0, 0, 0, 0.5);
@@ -256,6 +258,12 @@ ul {
     font-style: italic;
     margin: 0 0 0.5rem;
     color: var(--color-text-secondary);
+}
+
+/* Award / selection highlights (e.g. Oral, Technical Papers Trailer) */
+.pub-highlight {
+    color: var(--color-highlight);
+    font-style: normal;
 }
 
 .pub-links {
@@ -536,45 +544,65 @@ ul {
     animation: typing-robot-celebrate 1s ease forwards;
 }
 
-/* ===== Walking-robot parade (Konami easter egg) ===== */
-.walker {
+/* ===== Easter egg: G1 rescue-breathing video overlay ===== */
+.egg-overlay {
     position: fixed;
-    bottom: 14px;
-    left: 0;
-    z-index: 150;
-    width: 34px;
-    height: 44px;
-    pointer-events: none;
-    will-change: transform;
-    animation: walk-across 7s linear both;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: egg-in 0.3s ease forwards;
 }
 
-.walker svg { display: block; overflow: visible; }
-.walker rect { fill: var(--color-link); }
-.walker .eye { fill: #fff; }
+@keyframes egg-in { to { opacity: 1; } }
 
-.walker .leg-l, .walker .leg-r, .walker .arm-l, .walker .arm-r {
-    transform-box: fill-box;
-    transform-origin: 50% 0%;
+.egg-caption {
+    margin: 0;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-.walker .walker-body {
-    transform-box: fill-box;
-    transform-origin: 50% 100%;
-    animation: walk-bob 0.45s ease-in-out infinite;
+.egg-overlay video {
+    max-width: min(90vw, 900px);
+    max-height: 72vh;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    background: #000;
 }
 
-.walker .leg-l { animation: walk-leg-a 0.45s ease-in-out infinite; }
-.walker .leg-r { animation: walk-leg-b 0.45s ease-in-out infinite; }
-.walker .arm-l { animation: walk-arm-b 0.45s ease-in-out infinite; }
-.walker .arm-r { animation: walk-arm-a 0.45s ease-in-out infinite; }
+.egg-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+}
 
-@keyframes walk-across { from { transform: translateX(-12vw); } to { transform: translateX(112vw); } }
-@keyframes walk-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
-@keyframes walk-leg-a { 0%, 100% { transform: rotate(16deg); } 50% { transform: rotate(-16deg); } }
-@keyframes walk-leg-b { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
-@keyframes walk-arm-a { 0%, 100% { transform: rotate(24deg); } 50% { transform: rotate(-24deg); } }
-@keyframes walk-arm-b { 0%, 100% { transform: rotate(-24deg); } 50% { transform: rotate(24deg); } }
+.egg-close:hover { background: rgba(255, 255, 255, 0.3); }
+
+.egg-hint {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
 
 /* ===== 3D tilt on publication thumbnails ===== */
 .pub-card-thumb {
@@ -690,8 +718,9 @@ ul {
         transition: none;
     }
 
-    .walker {
-        display: none;
+    .egg-overlay {
+        animation: none;
+        opacity: 1;
     }
 }
 
