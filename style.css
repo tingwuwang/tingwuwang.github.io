@@ -401,14 +401,19 @@ ul {
 }
 
 .theme-toggle svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
     width: 20px;
     height: 20px;
+    transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.theme-toggle .icon-sun { display: none; }
-.theme-toggle .icon-moon { display: block; }
-[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+/* Sun = midday (light), Moon = midnight (dark); they rotate-crossfade on toggle */
+.theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+[data-theme="dark"] .theme-toggle .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+[data-theme="dark"] .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
 
 /* Black brush-art images (name calligraphy, poem) inverted to read on dark */
 [data-theme="dark"] img[src$="tingwu.png"],
@@ -531,6 +536,52 @@ ul {
     animation: typing-robot-celebrate 1s ease forwards;
 }
 
+/* ===== Walking-robot parade (Konami easter egg) ===== */
+.walker {
+    position: fixed;
+    bottom: 14px;
+    left: 0;
+    z-index: 150;
+    width: 34px;
+    height: 44px;
+    pointer-events: none;
+    will-change: transform;
+    animation: walk-across 7s linear both;
+}
+
+.walker svg { display: block; overflow: visible; }
+.walker rect { fill: var(--color-link); }
+.walker .eye { fill: #fff; }
+
+.walker .leg-l, .walker .leg-r, .walker .arm-l, .walker .arm-r {
+    transform-box: fill-box;
+    transform-origin: 50% 0%;
+}
+
+.walker .walker-body {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: walk-bob 0.45s ease-in-out infinite;
+}
+
+.walker .leg-l { animation: walk-leg-a 0.45s ease-in-out infinite; }
+.walker .leg-r { animation: walk-leg-b 0.45s ease-in-out infinite; }
+.walker .arm-l { animation: walk-arm-b 0.45s ease-in-out infinite; }
+.walker .arm-r { animation: walk-arm-a 0.45s ease-in-out infinite; }
+
+@keyframes walk-across { from { transform: translateX(-12vw); } to { transform: translateX(112vw); } }
+@keyframes walk-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+@keyframes walk-leg-a { 0%, 100% { transform: rotate(16deg); } 50% { transform: rotate(-16deg); } }
+@keyframes walk-leg-b { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+@keyframes walk-arm-a { 0%, 100% { transform: rotate(24deg); } 50% { transform: rotate(-24deg); } }
+@keyframes walk-arm-b { 0%, 100% { transform: rotate(-24deg); } 50% { transform: rotate(24deg); } }
+
+/* ===== 3D tilt on publication thumbnails ===== */
+.pub-card-thumb {
+    transition: transform 0.18s ease;
+    transform-style: preserve-3d;
+}
+
 /* ===== Responsive: Tablet (768px) ===== */
 @media (max-width: 768px) {
     .hero-name {
@@ -631,6 +682,15 @@ ul {
     }
 
     .typing-robot {
+        display: none;
+    }
+
+    .theme-toggle svg,
+    .pub-card-thumb {
+        transition: none;
+    }
+
+    .walker {
         display: none;
     }
 }

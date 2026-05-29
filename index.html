@@ -7,13 +7,20 @@
         <meta name="description" content="Homepage of Tingwu Wang, Staff Research Scientist at NVIDIA GEAR">
         <link rel="canonical" href="https://tingwuwang.github.io/">
 
-        <!-- Apply saved/system color theme before paint to avoid a flash -->
+        <!-- Apply theme before paint to avoid a flash. Default follows the
+             visitor's local time — "the exact midday or midnight" — unless they
+             have made a manual choice (stored in localStorage). -->
         <script>
           (function () {
             try {
               var stored = localStorage.getItem('theme');
-              var dark = stored ? stored === 'dark'
-                : window.matchMedia('(prefers-color-scheme: dark)').matches;
+              var dark;
+              if (stored) {
+                dark = stored === 'dark';
+              } else {
+                var h = new Date().getHours();
+                dark = (h < 7 || h >= 19); // 7am–7pm = midday/light, else midnight/dark
+              }
               document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
             } catch (e) {}
           })();

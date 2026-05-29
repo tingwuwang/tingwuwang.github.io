@@ -7,8 +7,9 @@ function initThemeToggle() {
     // here we just keep the button's accessible state in sync and handle clicks.
     function sync(theme) {
         var dark = theme === 'dark';
-        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-label', dark ? 'Switch to light (midday) theme' : 'Switch to dark (midnight) theme');
         btn.setAttribute('aria-pressed', String(dark));
+        btn.title = dark ? 'Midnight ☾ — click for midday' : 'Midday ☀ — click for midnight';
     }
 
     sync(document.documentElement.getAttribute('data-theme'));
@@ -69,6 +70,7 @@ function initParticleCanvas() {
 
     var ctx = canvas.getContext('2d');
     var particles = [];
+    var bursts = [];
     var PARTICLE_COUNT = 50;
     var CONNECTION_DISTANCE = 120;
     var MOUSE_RADIUS = 150;
@@ -87,6 +89,29 @@ function initParticleCanvas() {
     document.addEventListener('mouseleave', function () {
         mouse.x = -9999;
         mouse.y = -9999;
+    });
+
+    // Click anywhere (except on interactive elements) to spawn a little burst of
+    // gravity-driven particles — a small physics-based flourish.
+    function spawnBurst(x, y) {
+        for (var i = 0; i < 14; i++) {
+            var a = Math.random() * Math.PI * 2;
+            var sp = 1.5 + Math.random() * 3.5;
+            bursts.push({
+                x: x, y: y,
+                vx: Math.cos(a) * sp,
+                vy: Math.sin(a) * sp - 1.5,
+                r: Math.random() * 2 + 1.5,
+                life: 1
+            });
+        }
+    }
+
+    document.addEventListener('click', function (e) {
+        if (isHidden) return;
+        var t = e.target;
+        if (t && t.closest && t.closest('a, button, input, textarea, select, label, video, .theme-toggle')) return;
+        spawnBurst(e.clientX, e.clientY);
     });
 
     function resize() {
@@ -178,6 +203,26 @@ function initParticleCanvas() {
                 }
             }
         }
+
+        // Click-spawned gravity particles (physics toy)
+        for (var b = bursts.length - 1; b >= 0; b--) {
+            var bp = bursts[b];
+            bp.vy += 0.08;          // gravity
+            bp.vx *= 0.99;
+            bp.x += bp.vx;
+            bp.y += bp.vy;
+            bp.life -= 0.012;
+            if (bp.life <= 0 || bp.y > canvas.height + 20) {
+                bursts.splice(b, 1);
+                continue;
+            }
+            ctx.globalAlpha = Math.max(0, bp.life);
+            ctx.beginPath();
+            ctx.arc(bp.x, bp.y, bp.r, 0, Math.PI * 2);
+            ctx.fillStyle = colors.dot;
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
 
         animationId = requestAnimationFrame(animate);
     }
@@ -458,9 +503,92 @@ function initLazyVideos() {
     videos.forEach(function (v) { observer.observe(v); });
 }
 
+/* ===== 3D Tilt on Publication Thumbnails ===== */
+function initTilt() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(hover: none)').matches) return; // skip touch devices
+
+    var thumbs = document.querySelectorAll('.pub-card-thumb');
+    thumbs.forEach(function (thumb) {
+        thumb.addEventListener('mousemove', function (e) {
+            var r = thumb.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width - 0.5;
+            var py = (e.clientY - r.top) / r.height - 0.5;
+            var MAX = 9;
+            thumb.style.transform =
+                'perspective(700px) rotateY(' + (px * MAX).toFixed(2) + 'deg) rotateX(' +
+                (-py * MAX).toFixed(2) + 'deg) scale(1.04)';
+        });
+        thumb.addEventListener('mouseleave', function () {
+            thumb.style.transform = '';
+        });
+    });
+}
+
+/* ===== Konami Code: a parade of walking robots ===== */
+function initKonami() {
+    var SEQ = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown',
+               'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+    var pos = 0;
+    var active = false;
+
+    document.addEventListener('keydown', function (e) {
+        var k = (e.key || '').toLowerCase();
+        if (k === SEQ[pos]) {
+            pos++;
+            if (pos === SEQ.length) { pos = 0; parade(); }
+        } else {
+            pos = (k === SEQ[0]) ? 1 : 0;
+        }
+    });
+
+    function makeWalker() {
+        var d = document.createElement('div');
+        d.className = 'walker';
+        d.setAttribute('aria-hidden', 'true');
+        d.innerHTML =
+            '<svg viewBox="0 0 34 44" width="34" height="44">' +
+                '<g class="walker-body">' +
+                    '<rect class="arm-l" x="6" y="17" width="3" height="11" rx="1.5"/>' +
+                    '<rect class="arm-r" x="25" y="17" width="3" height="11" rx="1.5"/>' +
+                    '<rect x="9" y="2" width="16" height="13" rx="3"/>' +
+                    '<circle class="eye" cx="14" cy="8" r="1.8"/>' +
+                    '<circle class="eye" cx="20" cy="8" r="1.8"/>' +
+                    '<rect x="10" y="15" width="14" height="14" rx="2"/>' +
+                '</g>' +
+                '<rect class="leg-l" x="12" y="28" width="3.6" height="14" rx="1.6"/>' +
+                '<rect class="leg-r" x="18.4" y="28" width="3.6" height="14" rx="1.6"/>' +
+            '</svg>';
+        return d;
+    }
+
+    function parade() {
+        if (active) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        active = true;
+
+        var made = [];
+        for (var i = 0; i < 6; i++) {
+            var w = makeWalker();
+            w.style.animationDelay = (i * 0.55) + 's';
+            document.body.appendChild(w);
+            made.push(w);
+        }
+
+        function cleanup() {
+            made.forEach(function (el) { if (el.parentNode) el.parentNode.removeChild(el); });
+            active = false;
+        }
+        made[made.length - 1].addEventListener('animationend', function (e) {
+            if (e.animationName === 'walk-across') cleanup();
+        });
+        setTimeout(cleanup, 13000); // safety net
+    }
+}
+
 /* ===== Init ===== */
 document.addEventListener('DOMContentLoaded', function () {
-    var inits = [initThemeToggle, initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop, initLazyVideos];
+    var inits = [initThemeToggle, initTypingRobot, initScrollAnimations, initParticleCanvas, initBackToTop, initLazyVideos, initTilt, initKonami];
     inits.forEach(function (fn) {
         try { fn(); } catch (e) { console.error(fn.name + ':', e); }
     });
