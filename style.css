@@ -106,7 +106,7 @@ ul {
 .site-container {
     position: relative;
     z-index: 1;
-    max-width: 880px;
+    max-width: 1060px;
     margin: 0 auto;
     padding: 0 1.5rem 2rem;
 }
@@ -226,6 +226,11 @@ ul {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+}
+
+/* A lone thumb centers vertically against tall text (e.g. long author lists) */
+.pub-card-thumb:has(> :only-child) {
+    justify-content: center;
 }
 
 .pub-card-thumb img,
